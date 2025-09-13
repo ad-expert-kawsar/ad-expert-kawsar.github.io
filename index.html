@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Md Kawser Shikder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0b1220;
+      --bg2:#101a2e;
+      --grad1:#6ee7f9;
+      --grad2:#8b5cf6;
+      --grad3:#22d3ee;
+      --glass: rgba(255,255,255,0.08);
+      --glass-strong: rgba(255,255,255,0.12);
+      --stroke: rgba(255,255,255,0.2);
+      --text:#e8eefc;
+      --muted:#b7c2de;
+      --accent:#7c3aed;
+      --accent2:#22d3ee;
+    }
+    html,body{height:100%;}
+    body{
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(99,102,241,0.15), transparent 60%),
+                  radial-gradient(1200px 800px at 110% 10%, rgba(34,211,238,0.12), transparent 60%),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x: hidden;
+    }
+    /* Glassmorphism */
+    .glass {
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .glass-strong {
+      background: var(--glass-strong);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .grad-text {
+      background: linear-gradient(90deg, var(--grad2), var(--grad3), var(--grad1));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    /* Decorative blobs */
+    .blob { position: absolute; filter: blur(60px); opacity: .35; pointer-events: none; mix-blend-mode: screen; animation: float 18s ease-in-out infinite; }
+    .blob-1 { width: 460px; height: 460px; top: -120px; left: -120px; background: radial-gradient(circle at 30% 30%, #60a5fa, transparent 60%);}
+    .blob-2 { width: 420px; height: 420px; bottom: -140px; right: -100px; background: radial-gradient(circle at 70% 70%, #22d3ee, transparent 60%); animation-delay: 3s;}
+    .blob-3 { width: 360px; height: 360px; top: 40%; left: 60%; background: radial-gradient(circle at 50% 50%, #a78bfa, transparent 60%); animation-delay: 6s;}
+    @keyframes float { 0%,100% { transform: translateY(0) translateX(0) scale(1);} 50% { transform: translateY(20px) translateX(-10px) scale(1.05);} }
+
+    /* Ring portrait UPDATED */
+    .ring-wrap {
+      position: relative;
+      width: 500px; /* Increased size */
+      height: 500px; /* Increased size */
+    }
+    .ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      padding: 12px; /* Adjusted padding */
+      background: conic-gradient(from 120deg, var(--grad2), var(--grad3), var(--grad1), var(--grad2));
+      animation: rotate 10s linear infinite;
+      /* --- Glowing Effect --- */
+      box-shadow: inset 0 0 12px rgba(255,255,255,0.1), /* Inner shine */
+                  0 0 20px 4px rgba(139, 92, 246, 0.4), /* Outer violet glow */
+                  0 0 35px 8px rgba(34, 211, 238, 0.3); /* Outer cyan glow */
+    }
+    @keyframes rotate { 0%{ transform: rotate(0deg);} 100%{ transform: rotate(360deg);} }
+    .portrait-stage {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+    }
+    .portrait {
+      width: 490px; /* Increased size */
+      height: 490px; /* Increased size */
+      position: relative;
+      border-radius: 9999px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* --- Liquid Glass Effect --- */
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.1);
+    }
+    .portrait img.user-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the image covers the circle */
+    }
+
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--grad2), var(--grad3));
+      color: white; border-radius: 14px; padding: .85rem 1.2rem; border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 10px 24px rgba(124,58,237,0.35);
+      transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.07); box-shadow: 0 14px 34px rgba(124,58,237,0.45);}
+    .btn-ghost {
+      background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid var(--stroke);
+      border-radius: 14px; padding: .85rem 1.2rem; transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn-ghost:hover { transform: translateY(-1px); background: rgba(255,255,255,0.1); box-shadow: 0 10px 24px rgba(0,0,0,0.25);}
+    .sec-title { letter-spacing: .02em; }
+    .sec-kicker { color: var(--accent2); font-weight: 600; text-transform: uppercase; letter-spacing: .18em; font-size: .8rem; }
+    .card { border-radius: 18px; overflow: hidden; }
+    .hover-rise{ transition: transform .18s ease, box-shadow .18s ease;}
+    .hover-rise:hover{ transform: translateY(-4px); box-shadow: 0 20px 44px rgba(0,0,0,0.35);}
+
+    /* Skill bars */
+    .skill-track{ height: 10px; background: rgba(255,255,255,0.08); border: 1px solid var(--stroke); border-radius: 9999px; overflow: hidden; }
+    .skill-fill{ height: 100%; background: linear-gradient(90deg, var(--grad2), var(--grad3)); border-right: 1px solid rgba(255,255,255,0.28); box-shadow: inset 0 0 12px rgba(255,255,255,0.15); transform-origin: left center; }
+
+    /* Filter pills */
+    .pill { border-radius: 9999px; padding: .45rem .9rem; border: 1px solid var(--stroke); background: rgba(255,255,255,0.06); color: var(--muted); cursor: pointer; transition: all .18s ease; user-select: none; }
+    .pill.active { background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(34,211,238,0.14)); color: var(--text); border-color: rgba(255,255,255,0.32); box-shadow: 0 8px 20px rgba(124,58,237,0.25); }
+
+    /* Portfolio grid items */
+    .grid-item{ position: relative; aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; border: 1px solid var(--stroke); background: rgba(255,255,255,0.04); cursor: pointer; }
+    .grid-item .mask{ position:absolute; inset:0; background: radial-gradient(120% 100% at 100% 100%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 65%); }
+    .thumb{ width:100%; height:100%; background: linear-gradient(120deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03), rgba(255,255,255,0.08)); background-size: 200% 200%; animation: shimmer 3s ease infinite; }
+    .thumb-image { width: 100%; height: 100%; object-fit: cover; }
+    @keyframes shimmer{ 0%{ background-position: 0% 50%;} 50%{ background-position: 100% 50%;} 100%{ background-position: 0% 50%;} }
+
+    /* Lightbox viewer */
+    #viewer .stage{ width: min(92vw, 1000px); aspect-ratio: 16/10; border-radius: 18px; overflow: hidden; border: 1px solid var(--stroke); }
+    #viewer .close-x{ position:absolute; top:12px; right:12px; }
+
+    /* Reviews marquee */
+    .reviews-marquee{ overflow:hidden; }
+    .reviews-track{ display:flex; gap:16px; width: max-content; animation: slideLeft 28s linear infinite; }
+    .review-card{ width: 320px; aspect-ratio: 4/3; border:1px solid var(--stroke); border-radius:16px; overflow:hidden; background: rgba(255,255,255,0.04); position:relative; }
+    .review-card .thumb{ animation-duration: 4s; }
+    .review-card .label{ position:absolute; bottom:10px; left:12px; padding:.25rem .5rem; border-radius:9999px; background: rgba(0,0,0,0.35); font-size:.8rem; }
+    @keyframes slideLeft{ 0%{ transform: translateX(0);} 100%{ transform: translateX(-50%);} }
+
+    /* Footer links */
+    .link:hover{ color: var(--accent2); }
+
+    /* Social brand colors + grow effect */
+    .social { border-radius: 12px; border: 1px solid var(--stroke); background: rgba(255,255,255,0.06); transition: transform .18s ease, box-shadow .18s ease, filter .18s ease; }
+    .social:hover{ transform: scale(1.07); box-shadow: 0 10px 24px rgba(0,0,0,0.25); filter: brightness(1.05); }
+    .social-fb svg { color: #1877F2; }
+    .social-li svg { color: #0A66C2; }
+    .social-yt svg { color: #FF0000; }
+    .social-ig svg { color: #E4405F; }
+
+    /* Smooth entrance */
+    .reveal { opacity: 0; transform: translateY(16px); transition: all .6s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <!-- Blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <!-- Header / Hero -->
+  <header class="relative">
+    <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-16">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <!-- Left: Intro -->
+        <div class="reveal">
+          <span class="sec-kicker">Freelancer • Digital Marketer </span>
+          <h1 class="sec-title text-3xl md:text-5xl font-extrabold mt-3 leading-tight">
+            I help <span class="grad-text">businesses convert</span> clicks into paying customers
+          </h1>
+          <p class="text-base md:text-lg text-[color:var(--muted)] mt-4 md:mt-5 max-w-2xl">
+            Scale Your Business With AI Driven Meta And Google Ad Strategies
+          </p>
+
+          <!-- New personal headline -->
+          <div class="mt-6 mb-2">
+            <div class="text-xl md:text-2xl font-semibold">I’m <span class="grad-text font-extrabold">Md. Kawser Shikder</span>,</div>
+            <div class="text-2xl md:text-3xl font-extrabold mt-1">Shopify Facebook Ads Specialist </div>
+          </div>
+
+          <!-- Improved Contact Info Box -->
+          <div class="glass card p-6 hover-rise mt-6">
+            <div class="space-y-4">
+              
+              <!-- Name -->
+              <div class="flex items-start gap-4">
+                <div class="w-6 text-center text-[color:var(--accent2)] pt-1">
+                  <!-- User Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div class="flex-1">
+                  <span class="text-sm text-[color:var(--muted)]">Name</span>
+                  <strong class="block text-base text-[color:var(--text)]">MD. Kawsar Shikder</strong>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="flex items-start gap-4">
+                <div class="w-6 text-center text-[color:var(--accent2)] pt-1">
+                  <!-- Phone Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div class="flex-1">
+                  <span class="text-sm text-[color:var(--muted)]">Phone</span>
+                  <a href="tel:+8801870860246" class="block text-base link hover:text-[color:var(--grad1)] transition-colors">+8801870860246</a>
+                </div>
+              </div>
+              
+              <!-- Email -->
+              <div class="flex items-start gap-4">
+                <div class="w-6 text-center text-[color:var(--accent2)] pt-1">
+                  <!-- Email Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="flex-1">
+                  <span class="text-sm text-[color:var(--muted)]">Email</span>
+                  <a href="mailto:adexpertkawsar99@gmail.com" class="block text-base link hover:text-[color:var(--grad1)] transition-colors break-all">adexpertkawsar99@gmail.com</a>
+                </div>
+              </div>
+              
+              <!-- Facebook -->
+              <div class="flex items-start gap-4">
+                <div class="w-6 text-center text-[color:var(--accent2)] pt-1">
+                  <!-- Facebook Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </div>
+                <div class="flex-1">
+                  <span class="text-sm text-[color:var(--muted)]">Facebook</span>
+                  <a target="_blank" rel="noopener" href="https://www.facebook.com/Shikder601" class="block text-base link hover:text-[color:var(--grad1)] transition-colors">facebook.com/Shikder601</a>
+                </div>
+              </div>
+              
+            </div>
+            
+            <!-- Button -->
+            <div class="mt-6">
+              <a id="downloadCV" class="btn-primary flex w-full items-center justify-center gap-2" href="/cv/cv.pdf" download="cv.pdf">
+                <span>Download CV</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Special Ring + User Portrait UPDATED -->
+        <div class="flex justify-center lg:justify-end reveal">
+          <div class="ring-wrap">
+            <div class="ring"></div>
+            <div class="portrait-stage">
+              <div class="portrait">
+                <img src="files/1.png" alt="Portrait of Md Kawser Shikder" class="user-image">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </header>
+
+  <!-- Counters -->
+  <section class="relative">
+    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="glass card p-5 text-center hover-rise reveal">
+          <div class="text-3xl md:text-4xl font-extrabold grad-text"><span data-count="3">3</span>+</div>
+          <div class="mt-1 text-sm text-[color:var(--muted)]">Years Experience</div>
+        </div>
+        <div class="glass card p-5 text-center hover-rise reveal">
+          <div class="text-3xl md:text-4xl font-extrabold grad-text"><span data-count="160">160</span>+</div>
+          <div class="mt-1 text-sm text-[color:var(--muted)]">Project Complete</div>
+        </div>
+        <div class="glass card p-5 text-center hover-rise reveal">
+          <div class="text-3xl md:text-4xl font-extrabold grad-text"><span data-count="96">96</span>+</div>
+          <div class="mt-1 text-sm text-[color:var(--muted)]">Happy Clients</div>
+        </div>
+        <div class="glass card p-5 text-center hover-rise reveal">
+          <div class="text-3xl md:text-4xl font-extrabold grad-text"><span data-count="13">13</span>+</div>
+          <div class="mt-1 text-sm text-[color:var(--muted)]">Country</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="relative">
+    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+      <div class="flex items-end justify-between gap-4">
+        <div class="reveal">
+          <div class="sec-kicker">My Service</div>
+          <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">What I Can Do</h2>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="glass card p-6 hover-rise reveal">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-xl">Google Ads Campaign</h3>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full" style="background: rgba(124,58,237,0.18); border:1px solid var(--stroke);">📈</span>
+          </div>
+          <p class="text-[color:var(--muted)] mt-3 text-sm">Search, Display, Shopping—ROI first, testing always.</p>
+          <button data-service="google" class="btn-ghost mt-4 more-detail">More Detail</button>
+        </div>
+        <div class="glass card p-6 hover-rise reveal">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-xl">Meta Ads Campaign</h3>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full" style="background: rgba(34,211,238,0.18); border:1px solid var(--stroke);">💬</span>
+          </div>
+          <p class="text-[color:var(--muted)] mt-3 text-sm">Audience-first creatives with clear goals and lift.</p>
+          <button data-service="meta" class="btn-ghost mt-4 more-detail">More Detail</button>
+        </div>
+        <div class="glass card p-6 hover-rise reveal">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-xl">Web Analytics</h3>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full" style="background: rgba(110,231,183,0.16); border:1px solid var(--stroke);">📊</span>
+          </div>
+          <p class="text-[color:var(--muted)] mt-3 text-sm">GA4, Tag Manager, dashboards that tell the truth.</p>
+          <button data-service="analytics" class="btn-ghost mt-4 more-detail">More Detail</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="relative">
+    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+      <div class="reveal">
+        <div class="sec-kicker">My Skills</div>
+        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Core Expertise</h2>
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button class="pill active" data-skilltab="google">Google Ads</button>
+        <button class="pill" data-skilltab="meta">Meta Ads</button>
+        <button class="pill" data-skilltab="analytics">Web Analytics</button>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="glass card p-6 reveal skill-panel" data-panel="google">
+          <div class="flex items-center justify-between"><h3 class="font-semibold">Google Ads PPC Campaign</h3><span class="text-sm text-[color:var(--muted)]">90%</span></div>
+          <div class="skill-track mt-3"><div class="skill-fill" style="width:90%"></div></div>
+          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Google Ads Display Campaign</h3><span class="text-sm text-[color:var(--muted)]">89%</span></div>
+          <div class="skill-track mt-3"><div class="skill-fill" style="width:89%"></div></div>
+          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Google Shopping Ads Campaign</h3><span class="text-sm text-[color:var(--muted)]">80%</span></div>
+          <div class="skill-track mt-3"><div class="skill-fill" style="width:80%"></div></div>
+          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Keyword Research</h3><span class="text-sm text-[color:var(--muted)]">86%</span></div>
+          <div class="skill-track mt-3"><div class="skill-fill" style="width:86%"></div></div>
+        </div>
+
+        <div class="glass card p-6 reveal skill-panel hidden" data-panel="meta">
+          <div class="flex items-center justify-between"><h3 class="font-semibold">Meta Prospecting</h3><span class="text-sm text-[color:var(--muted)]">88%</span></div>
+          <div class="skill-track mt-3"><div class="skill-fill" style="width:88%"></div></div>
+          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Retargeting & Funnels</h3><span class="text-sm text-[color:var(--muted)]">84%</span></div>
+          <div class="skill-track mt-3"><div class="skill-fill" style="width:84%"></div></div>
+          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Creative Testing</h3><span class="text-sm text-[color:var(--muted)]">82%</span></div>
+          <div class="skill-track mt-3"><div class="skill-fill" style="width:82%"></div></div>
+        </div>
+
+        <div class="glass card p-6 reveal skill-panel hidden" data-panel="analytics">
+          <div class="flex items-center justify-between"><h3 class="font-semibold">GA4 Tracking</h3><span class="text-sm text-[color:var(--muted)]">92%</span></div>
+          <div class="skill-track mt-3"><div class="skill-fill" style="width:92%"></div></div>
+          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">GTM Events</h3><span class="text-sm text-[color:var(--muted)]">90%</span></div>
+          <div class="skill-track mt-3"><div class="skill-fill" style="width:90%"></div></div>
+          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Dashboarding</h3><span class="text-sm text-[color:var(--muted)]">85%</span></div>
+          <div class="skill-track mt-3"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="relative">
+    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+      <div class="reveal">
+        <div class="sec-kicker">My Portfolio</div>
+        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Selected Work</h2>
+      </div>
+
+      <!-- Filter -->
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button class="pill active" data-filter="all">All</button>
+        <button class="pill" data-filter="Google Ads">Google Ads</button>
+        <button class="pill" data-filter="Meta Ads">Meta Ads</button>
+        <button class="pill" data-filter="Web Analytics">Web Analytics</button>
+      </div>
+
+      <!-- Grid (permanent items; click to open viewer) -->
+      <div id="portfolioGrid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid-item hover-rise reveal" data-cat="Google Ads" data-title="Google Ads • Lead Gen">
+          <img src="https://i.ibb.co/68S5W8B/p1.png" alt="Google Ads Lead Gen Project" class="thumb-image">
+          <div class="mask"></div>
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+            <span class="text-sm">Google Ads • Lead Gen</span>
+            <span class="pill py-1 px-2 text-xs pointer-events-none">Google Ads</span>
+          </div>
+        </div>
+        <div class="grid-item hover-rise reveal" data-cat="Google Ads" data-title="Google Ads • Shopping">
+          <img src="https://i.ibb.co/yQzZ0g8/p2.png" alt="Google Ads Shopping Project" class="thumb-image">
+          <div class="mask"></div>
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+            <span class="text-sm">Google Ads • Shopping</span>
+            <span class="pill py-1 px-2 text-xs pointer-events-none">Google Ads</span>
+          </div>
+        </div>
+        <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Meta • eCommerce">
+          <img src="https://i.ibb.co/2gFXT3M/p3.png" alt="Meta eCommerce Project" class="thumb-image">
+          <div class="mask"></div>
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+            <span class="text-sm">Meta • eCommerce</span>
+            <span class="pill py-1 px-2 text-xs pointer-events-none">Meta Ads</span>
+          </div>
+        </div>
+        <div class="grid-item hover-rise reveal" data-cat="Web Analytics" data-title="Analytics • GA4 Setup">
+          <img src="https://i.ibb.co/7jZt1pP/p4.png" alt="Analytics GA4 Setup Project" class="thumb-image">
+          <div class="mask"></div>
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+            <span class="text-sm">Analytics • GA4 Setup</span>
+            <span class="pill py-1 px-2 text-xs pointer-events-none">Web Analytics</span>
+          </div>
+        </div>
+        <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Meta • Lead Gen">
+          <img src="https://i.ibb.co/3MJwzC3/p5.png" alt="Meta Lead Gen Project" class="thumb-image">
+          <div class="mask"></div>
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+            <span class="text-sm">Meta • Lead Gen</span>
+            <span class="pill py-1 px-2 text-xs pointer-events-none">Meta Ads</span>
+          </div>
+        </div>
+        <div class="grid-item hover-rise reveal" data-cat="Web Analytics" data-title="Analytics • Dashboard">
+          <img src="https://i.ibb.co/KzWdF80/p6.png" alt="Analytics Dashboard Project" class="thumb-image">
+          <div class="mask"></div>
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+            <span class="text-sm">Analytics • Dashboard</span>
+            <span class="pill py-1 px-2 text-xs pointer-events-none">Web Analytics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Reviews: continuous right-to-left sliding -->
+  <section id="reviews" class="relative">
+    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+      <div class="reveal">
+        <div class="sec-kicker">Customer Reviews</div>
+        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">What Clients Shared</h2>
+      </div>
+
+      <div class="reviews-marquee glass card p-4 mt-6">
+        <div class="reviews-track">
+          <!-- Row 1 -->
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/Yh4qW70/c1.png" alt="Customer review 1" class="thumb-image">
+            <div class="label">5⭐ • Great ROAS</div>
+          </div>
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/MDB4M7j/c2.png" alt="Customer review 2" class="thumb-image">
+            <div class="label">5⭐ • Fast Setup</div>
+          </div>
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/P9gbRFr/c3.png" alt="Customer review 3" class="thumb-image">
+            <div class="label">4.9⭐ • Support</div>
+          </div>
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/HhCgXPk/c4.png" alt="Customer review 4" class="thumb-image">
+            <div class="label">5⭐ • Strategy</div>
+          </div>
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/LQrJ0M3/c5.png" alt="Customer review 5" class="thumb-image">
+            <div class="label">4.8⭐ • Insight</div>
+          </div>
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/N1Xw8v2/c6.png" alt="Customer review 6" class="thumb-image">
+            <div class="label">5⭐ • Scale</div>
+          </div>
+
+          <!-- Duplicate for seamless loop -->
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/Yh4qW70/c1.png" alt="Customer review 1" class="thumb-image">
+            <div class="label">5⭐ • Great ROAS</div>
+          </div>
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/MDB4M7j/c2.png" alt="Customer review 2" class="thumb-image">
+            <div class="label">5⭐ • Fast Setup</div>
+          </div>
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/P9gbRFr/c3.png" alt="Customer review 3" class="thumb-image">
+            <div class="label">4.9⭐ • Support</div>
+          </div>
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/HhCgXPk/c4.png" alt="Customer review 4" class="thumb-image">
+            <div class="label">5⭐ • Strategy</div>
+          </div>
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/LQrJ0M3/c5.png" alt="Customer review 5" class="thumb-image">
+            <div class="label">4.8⭐ • Insight</div>
+          </div>
+          <div class="review-card hover-rise">
+            <img src="https://i.ibb.co/N1Xw8v2/c6.png" alt="Customer review 6" class="thumb-image">
+            <div class="label">5⭐ • Scale</div>
+          </div>
+        </div>
+      </div>
+      <p class="text-xs mt-3 text-[color:var(--muted)] reveal">Note: Demo screenshots shown as placeholders.</p>
+    </div>
+  </section>
+
+  <!-- Why work with Us -->
+  <section id="why" class="relative">
+    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+      <div class="reveal">
+        <div class="sec-kicker">Why work with Us?</div>
+        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Success. Here’s why my clients trust me.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="glass card p-6 hover-rise reveal">
+          <div class="flex items-center gap-3"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(34,197,94,0.16); border:1px solid var(--stroke);">📐</div><h3 class="font-semibold text-lg">Data-Driven Solutions</h3></div>
+          <p class="text-[color:var(--muted)] mt-2 text-sm">Decisions backed by analytics to maximize ROI</p>
+        </div>
+        <div class="glass card p-6 hover-rise reveal">
+          <div class="flex items-center gap-3"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(34,211,238,0.16); border:1px solid var(--stroke);">⏳</div><h3 class="font-semibold text-lg">Time-Saving Support</h3></div>
+          <p class="text-[color:var(--muted)] mt-2 text-sm">Free up your schedule while we handle your branding and marketing needs.</p>
+        </div>
+        <div class="glass card p-6 hover-rise reveal">
+          <div class="flex items-center gap-3"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(124,58,237,0.18); border:1px solid var(--stroke);">🏆</div><h3 class="font-semibold text-lg">Proven Expertise</h3></div>
+          <p class="text-[color:var(--muted)] mt-2 text-sm">A track record of successful campaigns and satisfied clients.</p>
+        </div>
+        <div class="glass card p-6 hover-rise reveal">
+          <div class="flex items-center gap-3"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(250,204,21,0.16); border:1px solid var(--stroke);">💬</div><h3 class="font-semibold text-lg">Transparent Communication</h3></div>
+          <p class="text-[color:var(--muted)] mt-2 text-sm">You’re informed every step of the way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="relative">
+    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+      <div class="reveal">
+        <div class="sec-kicker">Service Price Package</div>
+        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Flexible Plans</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="glass card p-6 hover-rise relative reveal">
+          <h3 class="font-semibold text-xl">Package ONE</h3>
+          <p class="text-sm text-[color:var(--muted)] mt-1">Google Ads accounts with a monthly budget of $6,000 or less</p>
+          <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">349</span><span class="text-sm text-[color:var(--muted)]">Monthly</span></div>
+          <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
+            <li>• Primis necessitatibus</li><li>• Vis in, quo ei habeo tollit</li><li>• Prodesset, atissimi vel</li>
+          </ul>
+          <button class="btn-primary mt-6 w-full choose-plan" data-plan="ONE">Choose Plan</button>
+        </div>
+
+        <div class="glass card p-6 hover-rise relative reveal">
+          <h3 class="font-semibold text-xl">Package TWO</h3>
+          <p class="text-sm text-[color:var(--muted)] mt-1">Google Ads accounts with a monthly budget over $6,000</p>
+          <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">499</span><span class="text-sm text-[color:var(--muted)]">Monthly</span></div>
+          <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
+            <li>• Primis necessitatibus</li><li>• Vis in, quo ei habeo tollit</li><li>• Prodesset, atissimi vel</li>
+          </ul>
+          <button class="btn-primary mt-6 w-full choose-plan" data-plan="TWO">Choose Plan</button>
+        </div>
+
+        <div class="glass card p-6 hover-rise relative reveal">
+          <div class="absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-bold" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">Popular</div>
+          <h3 class="font-semibold text-xl">Premium Package</h3>
+          <p class="text-sm text-[color:var(--muted)] mt-1">For accounts with a monthly budget over $15,000.</p>
+          <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">799</span><span class="text-sm text-[color:var(--muted)]">Monthly</span></div>
+          <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
+            <li>• Primis necessitatibus</li><li>• Vis in, quo ei habeo tollit</li><li>• Prodesset, atissimi vel</li>
+          </ul>
+          <button class="btn-primary mt-6 w-full choose-plan" data-plan="PREMIUM">Choose Plan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative">
+    <div class="max-w-7xl mx-auto px-6 pb-10">
+      <div class="glass card p-6 md:p-8 hover-rise">
+        <div class="grid md:grid-cols-3 gap-6 items-center">
+          <div>
+            <div class="text-xl font-bold grad-text">Md. Kawsar Shikder</div>
+            <p class="text-sm text-[color:var(--muted)] mt-2">Scale Your Business With AI Driven Meta And Google Ad Strategies</p>
+          </div>
+          <div class="flex md:justify-center gap-4">
+            <a class="link" href="#services">Services</a>
+            <a class="link" href="#portfolio">Portfolio</a>
+            <a class="link" href="#pricing">Pricing</a>
+            <a class="link" href="#why">Why Us</a>
+          </div>
+          <div class="md:text-right">
+            <div class="flex md:justify-end gap-3">
+              <!-- Social icons with brand colors and grow effect -->
+              <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="social social-fb p-2 inline-flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06C2 17.08 5.66 21.2 10.44 22v-7.02H7.9v-2.92h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.92h-2.34V22C18.34 21.2 22 17.08 22 12.06z"/></svg>
+              </a>
+              <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social social-li p-2 inline-flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4zM8.5 8.5h3.83v1.98h.05c.53-1.01 1.84-2.07 3.79-2.07 4.05 0 4.79 2.67 4.79 6.15V23h-4v-6.53c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+              </a>
+              <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" class="social social-yt p-2 inline-flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.23-1.64-.95-2.36c-.9-.95-1.9-.96-2.36-1.02C17.64 2.5 12 2.5 12 2.5h0s-5.64 0-8.19.32c-.46.06-1.46.07-2.36 1.02C.73 4.56.5 6.2.5 6.2S.18 8.2.18 10.2v1.6c0 2 .32 4 .32 4s.23 1.64.95 2.36c.9.95 2.08.92 2.61 1.02 1.9.18 8 .32 8 .32s5.64 0 8.19-.32c.46-.06 1.46-.07 2.36-1.02.72-.72.95-2.36.95-2.36s.32-2 .32-4v-1.6c0-2-.32-4-.32-4zM9.75 13.88V8.92l5.2 2.48-5.2 2.48z"/></svg>
+              </a>
+              <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social social-ig p-2 inline-flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .26 2.5.43.6.23 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.4 1.3.5 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.5-.2.6-.5 1-.9 1.5-.5.5-1 .8-1.6 1-.5.2-1.3.4-2.5.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.5-.6-.2-1.1-.5-1.6-1-.4-.5-.7-.9-.9-1.5-.3-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .5-2.5.2-.6.5-1.1 1-1.6.5-.5.9-.7 1.5-1 .5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2m0 2.2c-3.1 0-3.5 0-4.7.1-1 .05-1.6.23-2 .38-.5.2-.8.4-1.1.7-.3.3-.6.6-.8 1.1-.2.4-.3 1-.4 2-.1 1.3-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.4 2 .2.5.5.8.8 1.1.3.3.7.6 1.1.8.4.2 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 2-.4.5-.2.8-.5 1.1-.8.3-.3.6-.6.8-1.1.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.4-2-.2-.5-.5-.8-.8-1.1-.3-.3-.6-.6-1.1-.8-.4-.2-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.6a6.2 6.2 0 1 1 0 12.4 6.2 6.2 0 0 1 0-12.4zm7-1.3a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z"/></svg>
+              </a>
+            </div>
+            <!-- Copyright text removed as requested -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center z-50">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="glass-strong card p-6 max-w-lg w-[92%] relative">
+      <button id="closeModal" class="absolute top-3 right-3 btn-ghost px-3 py-1">Close</button>
+      <h3 id="modalTitle" class="text-xl font-semibold">More Detail</h3>
+      <p id="modalBody" class="text-sm text-[color:var(--muted)] mt-2">Details will appear here.</p>
+    </div>
+  </div>
+
+  <!-- Image Viewer (Portfolio Lightbox) -->
+  <div id="viewer" class="fixed inset-0 hidden items-center justify-center z-50">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="glass-strong card relative p-4">
+      <button class="btn-ghost close-x">Close</button>
+      <div class="stage">
+        <div id="viewerContent" class="w-full h-full"></div>
+      </div>
+      <div id="viewerCaption" class="text-sm text-center text-[color:var(--muted)] mt-3 px-2"></div>
+    </div>
+  </div>
+
+  <script>
+    // Smooth reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);}
+      });
+    }, {threshold: .1});
+    revealEls.forEach(el=>io.observe(el));
+
+    // Animated counters
+    const counters = document.querySelectorAll('[data-count]');
+    const co = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const el = e.target;
+          const end = +el.getAttribute('data-count');
+          let cur = 0;
+          const step = Math.max(1, Math.floor(end/60));
+          const tick = () => {
+            cur += step; if(cur >= end){ cur = end; }
+            el.textContent = cur;
+            if(cur < end){ requestAnimationFrame(tick); }
+          };
+          tick(); co.unobserve(el);
+        }
+      })
+    }, {threshold:.5});
+    counters.forEach(el=>co.observe(el));
+
+    // Skills tabs
+    const skillPills = document.querySelectorAll('[data-skilltab]');
+    const panels = document.querySelectorAll('.skill-panel');
+    skillPills.forEach(p=>{
+      p.addEventListener('click', ()=>{
+        skillPills.forEach(x=>x.classList.remove('active'));
+        p.classList.add('active');
+        const sel = p.getAttribute('data-skilltab');
+        panels.forEach(panel=>panel.classList.toggle('hidden', panel.getAttribute('data-panel') !== sel));
+      });
+    });
+
+    // Portfolio filter
+    const filterPills = document.querySelectorAll('[data-filter]');
+    const portfolioGrid = document.getElementById('portfolioGrid');
+    filterPills.forEach(p=>{
+      p.addEventListener('click', ()=>{
+        filterPills.forEach(x=>x.classList.remove('active'));
+        p.classList.add('active');
+        const cat = p.getAttribute('data-filter');
+        [...portfolioGrid.children].forEach(item=>{
+          const match = cat==='all' || item.getAttribute('data-cat')===cat;
+          item.style.display = match ? '' : 'none';
+        });
+      });
+    });
+
+    // Portfolio lightbox viewer
+    const viewer = document.getElementById('viewer');
+    const viewerContent = document.getElementById('viewerContent');
+    const viewerCaption = document.getElementById('viewerCaption');
+    document.querySelector('#viewer .close-x').addEventListener('click', ()=> {
+      viewer.classList.add('hidden'); viewer.classList.remove('flex');
+      viewerContent.innerHTML = '';
+    });
+    viewer.addEventListener('click', (e)=> { if(e.target === viewer){ document.querySelector('#viewer .close-x').click(); } });
+    window.addEventListener('keydown', (e)=> { if(e.key === 'Escape' && !viewer.classList.contains('hidden')) document.querySelector('#viewer .close-x').click(); });
+
+    // Make each portfolio card open the viewer
+    document.querySelectorAll('#portfolioGrid .grid-item').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        viewer.classList.remove('hidden'); viewer.classList.add('flex');
+        const imgSrc = card.querySelector('.thumb-image').src;
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.className = 'w-full h-full object-contain';
+        viewerContent.innerHTML = '';
+        viewerContent.appendChild(img);
+        viewerCaption.textContent = card.getAttribute('data-title') || 'Preview';
+      });
+    });
+
+    // Modal for service details and plan selection
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    document.querySelectorAll('.more-detail').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const type = btn.getAttribute('data-service');
+        const map = {
+          google: { title: 'Google Ads Campaign', body: 'Full-funnel setup: PPC, Display, Shopping, conversion tracking, and ongoing A/B testing for better CPA.' },
+          meta: { title: 'Meta Ads Campaign', body: 'Audience research, creative testing, pixel setup, and funnel-based retargeting to grow ROAS.' },
+          analytics: { title: 'Web Analytics', body: 'GA4 + GTM implementation, events, enhanced conversions, and dashboarding for clear insights.' }
+        };
+        modalTitle.textContent = map[type].title;
+        modalBody.textContent = map[type].body;
+        modal.classList.remove('hidden'); modal.classList.add('flex');
+      });
+    });
+    document.querySelectorAll('.choose-plan').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        modalTitle.textContent = 'Plan Selected';
+        modalBody.textContent = `Thanks! You chose package ${btn.getAttribute('data-plan')}. I will get back to you via email.`;
+        modal.classList.remove('hidden'); modal.classList.add('flex');
+      });
+    });
+    closeModal.addEventListener('click', ()=> { modal.classList.add('hidden'); modal.classList.remove('flex'); });
+    modal.addEventListener('click', (e)=> { if(e.target === modal){ closeModal.click(); } });
+  </script>
+</body>
+</html>
