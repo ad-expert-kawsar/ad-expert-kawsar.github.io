@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Md Kawsar Shikder</title>
+  <title>Md Kawsar Shikder - Facebook Ads Specialist</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -58,23 +58,34 @@
     .blob-3 { width: 360px; height: 360px; top: 40%; left: 60%; background: radial-gradient(circle at 50% 50%, #a78bfa, transparent 60%); animation-delay: 6s;}
     @keyframes float { 0%,100% { transform: translateY(0) translateX(0) scale(1);} 50% { transform: translateY(20px) translateX(-10px) scale(1.05);} }
 
-    /* Ring portrait UPDATED */
+    /* Ring portrait - Responsive */
     .ring-wrap {
       position: relative;
-      width: 500px; /* Increased size */
-      height: 500px; /* Increased size */
+      width: 280px;
+      height: 280px;
+    }
+    @media (min-width: 640px) {
+      .ring-wrap {
+        width: 380px;
+        height: 380px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .ring-wrap {
+        width: 500px;
+        height: 500px;
+      }
     }
     .ring {
       position: absolute;
       inset: 0;
       border-radius: 9999px;
-      padding: 12px; /* Adjusted padding */
+      padding: 8px;
       background: conic-gradient(from 120deg, var(--grad2), var(--grad3), var(--grad1), var(--grad2));
       animation: rotate 10s linear infinite;
-      /* --- Glowing Effect --- */
-      box-shadow: inset 0 0 12px rgba(255,255,255,0.1), /* Inner shine */
-                  0 0 20px 4px rgba(139, 92, 246, 0.4), /* Outer violet glow */
-                  0 0 35px 8px rgba(34, 211, 238, 0.3); /* Outer cyan glow */
+      box-shadow: inset 0 0 12px rgba(255,255,255,0.1), 
+                  0 0 20px 4px rgba(139, 92, 246, 0.4),
+                  0 0 35px 8px rgba(34, 211, 238, 0.3);
     }
     @keyframes rotate { 0%{ transform: rotate(0deg);} 100%{ transform: rotate(360deg);} }
     .portrait-stage {
@@ -84,15 +95,14 @@
       place-items: center;
     }
     .portrait {
-      width: 490px; /* Increased size */
-      height: 490px; /* Increased size */
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
       position: relative;
       border-radius: 9999px;
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      /* --- Liquid Glass Effect --- */
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -102,9 +112,8 @@
     .portrait img.user-image {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Ensures the image covers the circle */
+      object-fit: cover;
     }
-
 
     /* Buttons */
     .btn-primary {
@@ -120,7 +129,10 @@
     }
     .btn-ghost:hover { transform: translateY(-1px); background: rgba(255,255,255,0.1); box-shadow: 0 10px 24px rgba(0,0,0,0.25);}
     .sec-title { letter-spacing: .02em; }
-    .sec-kicker { color: var(--accent2); font-weight: 600; text-transform: uppercase; letter-spacing: .18em; font-size: .8rem; }
+    .sec-kicker { color: var(--accent2); font-weight: 600; text-transform: uppercase; letter-spacing: .18em; font-size: .7rem; }
+    @media (min-width: 640px) {
+      .sec-kicker { font-size: .8rem; }
+    }
     .card { border-radius: 18px; overflow: hidden; }
     .hover-rise{ transition: transform .18s ease, box-shadow .18s ease;}
     .hover-rise:hover{ transform: translateY(-4px); box-shadow: 0 20px 44px rgba(0,0,0,0.35);}
@@ -130,8 +142,11 @@
     .skill-fill{ height: 100%; background: linear-gradient(90deg, var(--grad2), var(--grad3)); border-right: 1px solid rgba(255,255,255,0.28); box-shadow: inset 0 0 12px rgba(255,255,255,0.15); transform-origin: left center; }
 
     /* Filter pills */
-    .pill { border-radius: 9999px; padding: .45rem .9rem; border: 1px solid var(--stroke); background: rgba(255,255,255,0.06); color: var(--muted); cursor: pointer; transition: all .18s ease; user-select: none; }
+    .pill { border-radius: 9999px; padding: .45rem .9rem; border: 1px solid var(--stroke); background: rgba(255,255,255,0.06); color: var(--muted); cursor: pointer; transition: all .18s ease; user-select: none; font-size: 0.8rem; }
     .pill.active { background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(34,211,238,0.14)); color: var(--text); border-color: rgba(255,255,255,0.32); box-shadow: 0 8px 20px rgba(124,58,237,0.25); }
+    @media (min-width: 640px) {
+      .pill { font-size: inherit; }
+    }
 
     /* Portfolio grid items */
     .grid-item{ position: relative; aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; border: 1px solid var(--stroke); background: rgba(255,255,255,0.04); cursor: pointer; }
@@ -140,7 +155,7 @@
     .thumb-image { width: 100%; height: 100%; object-fit: cover; }
     @keyframes shimmer{ 0%{ background-position: 0% 50%;} 50%{ background-position: 100% 50%;} 100%{ background-position: 0% 50%;} }
 
-    /* Lightbox viewer -- IMPROVED NAVIGATION SYSTEM */
+    /* Lightbox viewer - Responsive */
     #viewer {
       display: none;
       position: fixed;
@@ -153,6 +168,7 @@
       align-items: center;
       justify-content: center;
       backdrop-filter: blur(10px);
+      padding: 1rem;
     }
     
     #viewer.show {
@@ -161,6 +177,7 @@
     
     .viewer-container {
       position: relative;
+      width: 100%;
       max-width: 90vw;
       max-height: 90vh;
       display: flex;
@@ -170,8 +187,8 @@
     
     .viewer-stage {
       position: relative;
-      max-width: 100%;
-      max-height: 70vh;
+      width: 100%;
+      max-height: 60vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -179,8 +196,8 @@
     }
     
     #viewerContent {
-      max-width: 100%;
-      max-height: 70vh;
+      width: 100%;
+      max-height: 60vh;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
@@ -188,8 +205,8 @@
     
     #viewerContent img {
       display: block;
-      max-width: 100%;
-      max-height: 70vh;
+      width: 100%;
+      max-height: 60vh;
       object-fit: contain;
     }
     
@@ -206,8 +223,8 @@
     
     .nav-arrow {
       pointer-events: auto;
-      width: 60px;
-      height: 60px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: rgba(139, 92, 246, 0.7);
       border: 2px solid rgba(255, 255, 255, 0.3);
@@ -216,13 +233,29 @@
       justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
-      margin: 0 20px;
+      margin: 0 10px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    @media (min-width: 640px) {
+      .nav-arrow {
+        width: 50px;
+        height: 50px;
+        margin: 0 15px;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .nav-arrow {
+        width: 60px;
+        height: 60px;
+        margin: 0 20px;
+      }
     }
     
     .nav-arrow:hover {
       background: rgba(139, 92, 246, 0.9);
-      transform: scale(1.1);
+      transform: scale(1.1) translateY(-50%);
     }
     
     .nav-arrow.hidden {
@@ -230,16 +263,31 @@
     }
     
     .nav-arrow svg {
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
       color: white;
+    }
+    
+    @media (min-width: 640px) {
+      .nav-arrow svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .nav-arrow svg {
+        width: 30px;
+        height: 30px;
+      }
     }
     
     #viewerCaption {
       background: rgba(0, 0, 0, 0.7);
-      padding: 1rem;
+      padding: 0.75rem;
       border-radius: 10px;
-      max-width: 80%;
+      width: 95%;
+      max-width: 600px;
       text-align: center;
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -247,23 +295,35 @@
     
     #viewerCaption strong {
       display: block;
-      font-size: 1.2rem;
+      font-size: 1rem;
       margin-bottom: 0.5rem;
       color: white;
     }
     
+    @media (min-width: 640px) {
+      #viewerCaption strong {
+        font-size: 1.2rem;
+      }
+    }
+    
     #viewerCaption p {
       color: #b7c2de;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       line-height: 1.4;
+    }
+    
+    @media (min-width: 640px) {
+      #viewerCaption p {
+        font-size: 0.9rem;
+      }
     }
     
     .viewer-close {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: rgba(239, 68, 68, 0.7);
       display: flex;
@@ -275,37 +335,84 @@
       transition: all 0.3s ease;
     }
     
+    @media (min-width: 640px) {
+      .viewer-close {
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .viewer-close {
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+    
     .viewer-close:hover {
       background: rgba(239, 68, 68, 0.9);
       transform: scale(1.1);
     }
     
     .viewer-close svg {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       color: white;
+    }
+    
+    @media (min-width: 640px) {
+      .viewer-close svg {
+        width: 22px;
+        height: 22px;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .viewer-close svg {
+        width: 24px;
+        height: 24px;
+      }
     }
     
     .viewer-counter {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 10px;
+      left: 10px;
       background: rgba(0, 0, 0, 0.7);
       color: white;
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 0.8rem;
       border-radius: 20px;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       z-index: 20;
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    @media (min-width: 640px) {
+      .viewer-counter {
+        top: 15px;
+        left: 15px;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
     }
 
     /* Reviews marquee */
     .reviews-marquee{ overflow:hidden; }
     .reviews-track{ display:flex; gap:16px; width: max-content; animation: slideLeft 28s linear infinite; }
-    .review-card{ width: 320px; aspect-ratio: 4/3; border:1px solid var(--stroke); border-radius:16px; overflow:hidden; background: rgba(255,255,255,0.04); position:relative; }
+    .review-card{ width: 280px; aspect-ratio: 4/3; border:1px solid var(--stroke); border-radius:16px; overflow:hidden; background: rgba(255,255,255,0.04); position:relative; }
+    @media (min-width: 640px) {
+      .review-card{ width: 320px; }
+    }
     .review-card .thumb{ animation-duration: 4s; }
-    .review-card .label{ position:absolute; bottom:10px; left:12px; padding:.25rem .5rem; border-radius:9999px; background: rgba(0,0,0,0.35); font-size:.8rem; }
+    .review-card .label{ position:absolute; bottom:10px; left:12px; padding:.25rem .5rem; border-radius:9999px; background: rgba(0,0,0,0.35); font-size:.7rem; }
+    @media (min-width: 640px) {
+      .review-card .label{ font-size:.8rem; }
+    }
     @keyframes slideLeft{ 0%{ transform: translateX(0);} 100%{ transform: translateX(-50%);} }
 
     /* Footer links */
@@ -322,6 +429,65 @@
     /* Smooth entrance */
     .reveal { opacity: 0; transform: translateY(16px); transition: all .6s ease; }
     .reveal.show { opacity: 1; transform: translateY(0); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg1);
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+    
+    .menu-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+    
+    /* Hamburger menu */
+    .hamburger {
+      display: block;
+      cursor: pointer;
+    }
+    
+    @media (min-width: 1024px) {
+      .hamburger {
+        display: none;
+      }
+    }
+    
+    .hamburger-line {
+      width: 24px;
+      height: 2px;
+      background-color: white;
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+    
+    .hamburger.active .hamburger-line:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .hamburger.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger.active .hamburger-line:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
   </style>
 </head>
 <body>
@@ -330,34 +496,61 @@
   <div class="blob blob-2"></div>
   <div class="blob blob-3"></div>
 
+  <!-- Mobile Menu -->
+  <div class="mobile-menu glass-strong" id="mobileMenu">
+    <button class="menu-close btn-ghost p-3" id="menuClose">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <nav class="flex flex-col items-center space-y-6 text-xl">
+      <a href="#services" class="link" onclick="closeMenu()">Services</a>
+      <a href="#skills" class="link" onclick="closeMenu()">Skills</a>
+      <a href="#portfolio" class="link" onclick="closeMenu()">Portfolio</a>
+      <a href="#reviews" class="link" onclick="closeMenu()">Reviews</a>
+      <a href="#why" class="link" onclick="closeMenu()">Why Me</a>
+      <a href="#pricing" class="link" onclick="closeMenu()">Pricing</a>
+    </nav>
+  </div>
+
   <!-- Header / Hero -->
   <header class="relative">
-    <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-16">
+    <div class="max-w-7xl mx-auto px-4 pt-6 pb-12 md:pt-16 md:px-6">
+      <!-- Mobile menu button -->
+      <div class="flex justify-between items-center mb-6 lg:hidden">
+        <div class="text-xl font-bold grad-text">Md. Kawsar Shikder</div>
+        <div class="hamburger" id="hamburger">
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+        </div>
+      </div>
+
       <div class="grid lg:grid-cols-2 gap-10 items-center">
         <!-- Left: Intro -->
-        <div class="reveal">
+        <div class="reveal order-2 lg:order-1">
           <span class="sec-kicker">Freelancer • Digital Marketer </span>
-          <h1 class="sec-title text-3xl md:text-5xl font-extrabold mt-3 leading-tight">
+          <h1 class="sec-title text-2xl md:text-4xl lg:text-5xl font-extrabold mt-3 leading-tight">
             I help <span class="grad-text">businesses convert</span> clicks into paying customers
           </h1>
-          <p class="text-base md:text-lg text-[color:var(--muted)] mt-4 md:mt-5 max-w-2xl">
+          <p class="text-sm md:text-base text-[color:var(--muted)] mt-4 md:mt-5 max-w-2xl">
             Scale Your Business With AI Driven Meta Ad Strategies
           </p>
 
           <!-- New personal headline -->
           <div class="mt-6 mb-2">
-            <div class="text-xl md:text-2xl font-semibold">I’m <span class="grad-text font-extrabold">Md. Kawsar Shikder</span>,</div>
-            <div class="text-2xl md:text-3xl font-extrabold mt-1">Shopify Facebook Ads Specialist </div>
+            <div class="text-lg md:text-xl font-semibold">I’m <span class="grad-text font-extrabold">Md. Kawsar Shikder</span>,</div>
+            <div class="text-xl md:text-2xl lg:text-3xl font-extrabold mt-1">Shopify Facebook Ads Specialist </div>
           </div>
 
           <!-- Improved Contact Info Box -->
-          <div class="glass card p-6 hover-rise mt-6">
+          <div class="glass card p-4 md:p-6 hover-rise mt-6">
             <div class="space-y-4">
               
               <!-- Name -->
               <div class="flex items-start gap-4">
                 <div class="w-6 text-center text-[color:var(--accent2)] pt-1">
-                  <!-- User Icon -->
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
                 <div class="flex-1">
@@ -369,8 +562,7 @@
               <!-- Phone -->
               <div class="flex items-start gap-4">
                 <div class="w-6 text-center text-[color:var(--accent2)] pt-1">
-                  <!-- Phone Icon -->
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 极速2.81.7A2 2 0 0 1 22 极速.92z"></path></svg>
                 </div>
                 <div class="flex-1">
                   <span class="text-sm text-[color:var(--muted)]">Phone</span>
@@ -381,11 +573,10 @@
               <!-- Email -->
               <div class="flex items-start gap-4">
                 <div class="w-6 text-center text-[color:var(--accent2)] pt-1">
-                  <!-- Email Icon -->
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="极速 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H极速c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </div>
                 <div class="flex-1">
-                  <span class="text-sm text-[color:var(--muted)]">Email</span>
+                  <span class="text-sm text-[极速:var(--muted)]">Email</span>
                   <a href="mailto:adexpertkawsar99@gmail.com" class="block text-base link hover:text-[color:var(--grad1)] transition-colors break-all">adexpertkawsar99@gmail.com</a>
                 </div>
               </div>
@@ -393,8 +584,7 @@
               <!-- Facebook -->
               <div class="flex items-start gap-4">
                 <div class="w-6 text-center text-[color:var(--accent2)] pt-1">
-                  <!-- Facebook Icon -->
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="current极速" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </div>
                 <div class="flex-1">
                   <span class="text-sm text-[color:var(--muted)]">Facebook</span>
@@ -414,8 +604,8 @@
           </div>
         </div>
 
-        <!-- Right: Special Ring + User Portrait UPDATED -->
-        <div class="flex justify-center lg:justify-end reveal">
+        <!-- Right: Special Ring + User Portrait -->
+        <div class="flex justify-center lg:justify-end reveal order-1 lg:order-2">
           <div class="ring-wrap">
             <div class="ring"></div>
             <div class="portrait-stage">
@@ -432,23 +622,23 @@
 
   <!-- Counters -->
   <section class="relative">
-    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-        <div class="glass card p-5 text-center hover-rise reveal">
-          <div class="text-3xl md:text-4xl font-extrabold grad-text"><span data-count="3">3</span>+</div>
-          <div class="mt-1 text-sm text-[color:var(--muted)]">Years Experience</div>
+    <div class="max-w-7xl mx-auto px-4 py-10 md:py-14 md:px-6">
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+        <div class="glass card p-4 md:p-5 text-center hover-rise reveal">
+          <div class="text-2xl md:text-3xl lg:text-4xl font-extrabold grad-text"><span data-count="3">3</span>+</div>
+          <div class="mt-1 text-xs md:text-sm text-[color:var(--muted)]">Years Experience</div>
         </div>
-        <div class="glass card p-5 text-center hover-rise reveal">
-          <div class="text-3xl md:text-4xl font-extrabold grad-text"><span data-count="160">160</span>+</div>
-          <div class="mt-1 text-sm text-[color:var(--muted)]">Project Complete</div>
+        <div class="glass card p-4 md:p-5 text-center hover-rise reveal">
+          <div class="text-2xl md:text-3xl lg:text-4xl font-extrabold grad-text"><极速 data-count="160">160</span>+</div>
+          <div class="mt-1 text-xs md:text-sm text-[color:var(--muted)]">Project Complete</div>
         </div>
-        <div class="glass card p-5 text-center hover-rise reveal">
-          <div class="text-3xl md:text-4xl font-extrabold grad-text"><span data-count="96">96</span>+</div>
-          <div class="mt-1 text-sm text-[color:var(--muted)]">Happy Clients</div>
+        <div class="glass card p-4 md:p-5 text-center hover-rise reveal">
+          <div class="text-2xl md:text-3xl lg:text-4xl font-extrabold grad-text"><span data-count="96">96</span>+</div>
+          <div class="mt-1 text-xs md:text-sm text-[color:var(--muted)]">Happy Clients</div>
         </div>
-        <div class="glass card p-5 text-center hover-rise reveal">
-          <div class="text-3xl md:text-4xl font-extrabold grad-text"><span data-count="13">13</span>+</div>
-          <div class="mt-1 text-sm text-[color:var(--muted)]">Country</div>
+        <div class="glass card p-4 md:p-5 text-center hover-rise reveal">
+          <div class="text-2xl md:text-3xl lg:text-4xl font-extrabold grad-text"><span data-count="13">13</span>+</div>
+          <div class="mt-1 text-xs md:text-sm text-[color:var(--muted)]">Country</极速>
         </div>
       </div>
     </div>
@@ -456,30 +646,30 @@
 
   <!-- Services -->
   <section id="services" class="relative">
-    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+    <div class="max-w-7xl mx-auto px-4 py-10 md:py-14 md:px-6">
       <div class="flex items-end justify-between gap-4">
         <div class="reveal">
           <div class="sec-kicker">My Service</div>
-          <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">What I Can Do</h2>
+          <h2 class="sec-title text-xl md:text-3xl lg:text-4xl font-bold mt-2">What I Can Do</h2>
         </div>
       </div>
 
       <div class="grid md:grid-cols-2 gap-6 mt-8">
-        <div class="glass card p-6 hover-rise reveal">
+        <div class="glass card p-4 md:p-6 hover-rise reveal">
           <div class="flex items-center justify-between">
-            <h3 class="font-semibold text-xl">Meta Ads Campaign</h3>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full" style="background: rgba(34,211,238,0.18); border:1px solid var(--stroke);">💬</span>
+            <h3 class="font-semibold text-lg md:text-xl">Meta Ads Campaign</h3>
+            <span class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full" style="background: rgba(34,211,238,0.18); border:1px solid var(--stroke);">💬</span>
           </div>
-          <p class="text-[color:var(--muted)] mt-3 text-sm">Audience-first creatives with clear goals and lift.</p>
-          <button data-service="meta" class="btn-ghost mt-4 more-detail">More Detail</button>
+          <p class="text-[color:var(--muted)] mt-3 text-xs md:text-sm">Audience-first creatives with clear goals and lift.</p>
+          <button data-service="meta" class="btn-ghost mt-4 more-detail text-sm">More Detail</button>
         </div>
-        <div class="glass card p-6 hover-rise reveal">
+        <div class="glass card p-4 md:p-6 hover-rise reveal">
           <div class="flex items-center justify-between">
-            <h3 class="font-semibold text-xl">Web Analytics & Tracking</h3>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full" style="background: rgba(110,231,183,0.16); border:1px solid var(--stroke);">📊</span>
+            <h3 class="font-semibold text-lg md:text-xl">Web Analytics & Tracking</h3>
+            <span class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full" style="极速: rgba(110,231,183,0.16); border:1px solid var(--stroke);">📊</span>
           </div>
-          <p class="text-[color:var(--muted)] mt-3 text-sm">Facebook Pixel, Conversion API, Server-Side Tracking, GA4, Google Tag Manager, dashboards that tell the truth.</p>
-          <button data-service="analytics" class="btn-ghost mt-4 more-detail">More Detail</button>
+          <p class="text-[color:var(--muted)] mt-3 text-xs md:text-sm">Facebook Pixel, Conversion API, Server-Side Tracking, GA4, Google Tag Manager, dashboards that tell the truth.</p>
+          <button data-service="analytics" class="btn-ghost mt-4 more-detail text-sm">More Detail</button>
         </div>
       </div>
     </div>
@@ -487,10 +677,10 @@
 
     <!-- Skills -->
   <section id="skills" class="relative">
-    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+    <div class="max-w-7xl mx-auto px-4 py-10 md:py-14 md:px极速">
       <div class="reveal">
         <div class="sec-kicker">My Skills</div>
-        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Core Expertise</h2>
+        <h2 class="sec-title text-xl md:text-3xl lg:text-4xl font-bold mt-2">Core Expertise</h2>
       </div>
 
       <div class="flex flex-wrap gap-3 mt-6">
@@ -499,21 +689,21 @@
       </div>
 
       <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <div class="glass card p-6 reveal skill-panel" data-panel="meta">
-          <div class="flex items-center justify-between"><h3 class="font-semibold">Facebook Ads Setup & Manage</h3><span class="text-sm text-[color:var(--muted)]">88%</span></div>
+        <div class="glass card p-4 md:p-6 reveal skill-panel" data-panel="meta">
+          <div class="flex items-center justify-between"><h3 class="font-semibold text-sm md:text-base">Facebook Ads Setup & Manage</h3><span class="text-xs md:text-sm text-[color:var(--muted)]">88%</span></div>
           <div class="skill-track mt-3"><div class="skill-fill" style="width:88%"></div></div>
-          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Retargeting & Funnels</h3><span class="text-sm text-[color:var(--muted)]">90%</span></div>
-          <div class="skill-track mt-3"><div class="skill-fill" style="width:90%"></div></div>
-          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Creative Testing</h3><span class="text-sm text-[color:var(--muted)]">91%</span></div>
+          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold text-sm md:text-base">Retargeting & Funnels</h3><span class="text-xs md:text-sm text-[color:var(--muted)]">90%</span></div>
+          <div class="skill-track mt-3"><div class="skill-fill" style="width:90%"></极速></div>
+          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold text-sm md:text-base">Creative Testing</h3><span class="text-xs md:text-sm text-[color:var(--muted)]">91%</span></div>
           <div class="skill-track mt-3"><div class="skill-fill" style="width:91%"></div></div>
         </div>
 
-        <div class="glass card p-6 reveal skill-panel hidden" data-panel="analytics">
-          <div class="flex items-center justify-between"><h3 class="font-semibold">GA4 Tracking</h3><span class="text-sm text-[color:var(--muted)]">88%</span></div>
+        <div class="glass card p-4 md:p-6 reveal skill-panel hidden" data-panel="analytics">
+          <div class="flex items-center justify-between"><h3 class="font-semibold text-sm md:text-base">GA4 Tracking</h3><span class="text-xs md:text-sm text-[color:var(--muted)]">88%</span></div>
           <div class="skill-track mt-3"><div class="skill-fill" style="width:88%"></div></div>
-          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Facebook Pixel & Conversion API</h3><span class="text-sm text-[color:var(--muted)]">95%</span></div>
+          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold text-sm md:text-base">Facebook Pixel & Conversion API</h3><span class="text-xs md:text-sm text-[color:var(--muted)]">95%</span></div>
           <div class="skill-track mt-3"><div class="skill-fill" style="width:95%"></div></div>
-          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Server Side Tracking</h3><span class="text-sm text-[color:var(--muted)]">90%</span></div>
+          <div class="flex items-center justify-between mt-6"><h3 class="font-semibold text-sm md:text-base">Server Side Tracking</h3><span class="text-xs md:text-sm text-[color:var(--muted)]">90%</span></div>
           <div class="skill-track mt-3"><div class="skill-fill" style="width:90%"></div></div>
         </div>
       </div>
@@ -522,10 +712,10 @@
 
   <!-- Portfolio -->
   <section id="portfolio" class="relative">
-    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+    <div class="max-w-7xl mx-auto px-4 py-10 md:py-14 md:px-6">
       <div class="reveal">
         <div class="sec-kicker">My Projects</div>
-        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Selected Work</h2>
+        <h2 class="sec-title text-xl md:text-3xl lg:text-4xl font-bold mt-2">Selected Work</h2>
       </div>
 
       <!-- Filter -->
@@ -536,7 +726,7 @@
       </div>
 
       <!-- Grid (permanent items; click to open viewer) -->
-      <div id="portfolioGrid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div id="portfolioGrid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- Gallery 1 -->
         <div class="grid-item hover-rise reveal" data-cat="Meta Ads" 
@@ -545,18 +735,18 @@
           <img src="/myprojects/facebook_ads/1.jpeg" alt="Sales Focused Campaign Success" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
-            <span class="text-sm font-semibold">Sales Focused Campaign Success</span>
+            <span class="text-xs md:text-sm font-semibold">Sales Focused Campaign Success</span>
           </div>
         </div>
 
         <!-- Gallery 2 -->
         <div class="grid-item hover-rise reveal" data-cat="Meta Ads" 
              data-title="Facebook Re-Targeting Sales Campaign" 
-             data-description="My client runs a business in the agriculture-based herbal diet supplement industry. His biggest frustration was that sales were not coming in, even after hiring someone else for 15 days, which unfortunately failed to deliver results. Later, he reached out to me, and I took over the project. I started by analyzing and optimizing his business setup. I spent several days on in-depth research to understand his target audience and also studied his competitors to identify the best opportunities. After carefully preparing the strategy, I launched highly targeted Facebook Ads campaigns. Soon, the results started to improve significantly, and the client was extremely happy with the outcome. This project not only boosted his traffic and sales but also built trust in my ability to turn failing campaigns into successful ones.">
+             data-description="My client runs a business in the agriculture-based herbal diet supplement industry. His biggest frustration was that sales were not coming in, even after hiring someone else for 15 days, which unfortunately failed to deliver results. Later, he reached out to me, and I took极速 the project. I started by analyzing and optimizing his business setup. I spent several days on in-depth research to understand his target audience and also studied his competitors to identify the best opportunities. After carefully preparing the strategy, I launched highly targeted Facebook Ads campaigns. Soon, the results started to improve significantly, and the client was extremely happy with the outcome. This project not only boosted his traffic and sales but also built trust in my ability to turn failing campaigns into successful ones.">
           <img src="/myprojects/facebook_ads/2.jpeg" alt="Facebook Re-Targeting Sales Campaign" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
-            <span class="text-sm font-semibold">Facebook Re-Targeting Campaign</span>
+            <span class="text-xs md:text-sm font-semibold">Facebook Re-Targeting Campaign</span>
           </div>
         </div>
 
@@ -567,7 +757,7 @@
           <img src="/myprojects/facebook_ads/3.jpeg" alt="Sales-Boosting Meta Ads for Baby Carrier Bags" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
-            <span class="text-sm font-semibold">Meta Ads for Baby Carrier Bags</span>
+            <span class="text-xs md:text-sm font-semibold">Meta Ads for Baby Carrier Bags</span>
           </div>
         </div>
 
@@ -575,10 +765,10 @@
         <div class="grid-item hover-rise reveal" data-cat="Meta Ads" 
              data-title="Meta Ads Campaign for Fan Sales" 
              data-description="This project was for an electric fan product. The client’s main goal was to generate online sales. Based on their requirements, I conducted thorough research on the target audience, competitors, and optimal ad strategies. I managed the project end-to-end, creating highly targeted Meta Ads campaigns to drive engagement and potential sales. The results met the client’s expectations, delivering measurable performance and leaving the client satisfied with the outcome. This project highlights my ability to understand client needs, implement effective ad strategies, and achieve tangible results for consumer electronics products.">
-          <img src="/myprojects/facebook_ads/4.jpeg" alt="Meta Ads Campaign for Fan Sales" class="thumb-image">
+          <img src="/myprojects/facebook_ads/4.jpeg" alt="Meta Ads Campaign for Fan Sales" class="thumb极速">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
-            <span class="text-sm font-semibold">Meta Ads for Fan Sales</span>
+            <span class="text-xs md:text-sm font-semibold">Meta Ads for Fan Sales</span>
           </div>
         </div>
 
@@ -587,21 +777,21 @@
              data-title="Results from Meta Ads Campaigns I Ran" 
              data-description="Here are the detailed and measurable results I successfully delivered for my client during our collaboration, showcasing the impact of my strategies.">
           <img src="/myprojects/facebook_ads/5.jpeg" alt="Results from Meta Ads Campaigns I Ran" class="thumb-image">
-          <div class="mask"></div>
-          <div class="absolute bottom-3 left-3 right-3">
-            <span class="text-sm font-semibold">Meta Ads Campaign Results</span>
+          <div class="mask"></极速>
+          <div class="absolute bottom-3 left极速 right-3">
+            <span class="text-xs md:text-sm font-semibold">Meta Ads Campaign Results</span>
           </div>
         </div>
         
         <!-- Gallery 6 (Combined 6.1 and 6.2) -->
         <div class="grid-item hover-rise reveal" data-cat="Meta Ads" 
              data-title="Baby Product Sales Campaign (A/B Test & Results)" 
-             data-description="This project was entirely focused on baby products. The client lacked a strong online presence and was facing issues with low sales and poor website traffic. After seeing my gig, they hired me to manage their project. I first analyzed their products, conducted research, and identified the potential target audience. Initially, I ran a campaign, but the results were not satisfactory. To improve performance, I launched an A/B test campaign named “4-Bicc-AB-Kids Toy Product Sales DT”. Through this A/B test, I successfully drove significant traffic, resulting in improved engagement and increased sales on the client’s website."
+             data-description="This project was entirely focused on baby products. The client lacked a strong online presence and was facing issues with low sales and poor website traffic. After seeing my gig, they hired me to manage their project. I first analyzed their极速, conducted research, and identified the potential target audience. Initially, I ran a campaign, but the results were not satisfactory. To improve performance, I launched an A/B test campaign named “4-Bicc-AB-Kids Toy Product Sales DT”. Through this A/B test, I successfully drove significant traffic, resulting in improved engagement and increased sales on the client’s website."
              data-images="/myprojects/facebook_ads/6.1.jpeg,/myprojects/facebook_ads/6.2.jpeg">
           <img src="/myprojects/facebook_ads/6.1.jpeg" alt="Baby Product Sales Campaign" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
-            <span class="text-sm font-semibold">Baby Product Sales Campaign (A/B Test)</span>
+            <span class="text-xs md:text-sm font-semibold">Baby Product Sales Campaign (A/B Test)</span>
           </div>
         </div>
         
@@ -609,10 +799,10 @@
         <div class="grid-item hover-rise reveal" data-cat="Meta Ads" 
              data-title="Sales Focused Campaign Success" 
              data-description="Designed and executed a conversion-driven campaign with a high-performing landing page and quality UGC content. Result: Real sales growth for the client through the right strategy + optimized landing page + engaging content.">
-          <img src="/myprojects/facebook_ads/7.jpeg" alt="Sales Focused Campaign Success" class="thumb-image">
+          <img src="/myprojects/facebook_ads/极速jpeg" alt="Sales Focused Campaign Success" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
-            <span class="text-sm font-semibold">Conversion-Driven Campaign</span>
+            <span class="text-xs md:text-sm font-semibold">Conversion-Driven Campaign</span>
           </div>
         </div>
 
@@ -623,7 +813,7 @@
           <img src="/myprojects/facebook_ads/8.jpeg" alt="Shopify Sales & Performance Analytics Dashboard" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
-            <span class="text-sm font-semibold">Shopify Performance Analytics</span>
+            <span class="text-xs md:text-sm font-semibold">Shopify Performance Analytics</span>
           </div>
         </div>
 
@@ -634,7 +824,7 @@
           <img src="/myprojects/facebook_ads/9.jpeg" alt="Facebook Ads Campaign Results" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
-            <span class="text-sm font-semibold">Low-Cost Ad Campaign Results</span>
+            <span class="text-xs md:text-sm font-semibold">Low-Cost Ad Campaign Results</span>
           </div>
         </div>
         
@@ -645,19 +835,19 @@
           <img src="/myprojects/facebook_ads/10.jpeg" alt="High-ROAS Facebook Ads Campaign (7.87x Return)" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
-            <span class="text-sm font-semibold">High-ROAS (7.87x) Campaign</span>
+            <span class="text-xs md:text-sm font-semibold">High-ROAS (7.87x) Campaign</span>
           </div>
         </div>
 
         <!-- NEW Web Analytics Gallery -->
         <div class="grid-item hover-rise reveal" data-cat="Web Analytics & Tracking" 
              data-title="Track Every Click: Facebook Pixel, Server-Side CAPI & GA4 Setup" 
-             data-description="🚀 Never miss a conversion again! I set up Facebook Pixel, Server-Side CAPI, GA4, and GTM to track every click, lead, and sale with 100% accuracy. ✨ Benefits: Know which ads truly drive results, avoid data loss from browsers or ad blockers, make smarter ad decisions & scale campaigns confidently."
-             data-images="/myprojects/web_analytics_tracking/1.jpeg,/myprojects/web_analytics_tracking/2.jpeg,/myprojects/web_analytics_tracking/3.jpeg,/myprojects/web_analytics_tracking/4.jpeg,/myprojects/web_analytics_tracking/5.jpeg,/myprojects/web_analytics_tracking/6.jpeg,/myprojects/web_analytics_tracking/7.jpeg,/myprojects/web_analytics_tracking/8.jpeg,/myprojects/web_analytics_tracking/9.jpeg,/myprojects/web_analytics_tracking/10.jpeg">
+             data-description="🚀 Never miss a conversion again! I set up Facebook Pixel, Server极速 CAPI, GA4, and GTM to track every click, lead, and sale with 100% accuracy. ✨ Benefits: Know which ads truly drive results, avoid data loss from browsers or ad blockers, make smarter ad decisions & scale campaigns confidently."
+             data-images="/myprojects/web_analytics_tracking/1.jpeg,/myprojects/web_analytics_tracking/2.jpeg,/myprojects/web极速tracking/3.jpeg,/myprojects/web_analytics_tracking/4.jpeg,/myprojects/web_analytics_tracking/5.jpeg,/myprojects/web_analytics_tracking/6.jpeg,/myprojects/web_analytics_tracking/7.jpeg,/myprojects/web_analytics_tracking/8.jpeg,/myprojects/web_analytics_tracking/9.jpeg,/myprojects/web_analytics_tracking/10.jpeg">
           <img src="/myprojects/web_analytics_tracking/1.jpeg" alt="Web Analytics & Tracking Setup" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
-            <span class="text-sm font-semibold">Full Funnel Tracking Setup</span>
+            <span class="text-xs md:text-sm font-semibold">Full Funnel Tracking Setup</span>
           </div>
         </div>
         
@@ -667,10 +857,10 @@
 
   <!-- Customer Reviews: continuous right-to-left sliding -->
   <section id="reviews" class="relative">
-    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+    <div class="max-w-7xl mx-auto px-4 py-10 md:py-14 md:px-6">
       <div class="reveal">
         <div class="sec-kicker">Customer Reviews</div>
-        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">What Clients Shared</h2>
+        <h2 class="sec-title text-xl md:text-3xl lg:text-4xl font-bold mt-2">What Clients Shared</h2>
       </div>
 
       <div class="reviews-marquee glass card p-4 mt-6">
@@ -680,12 +870,12 @@
             <img src="https://i.ibb.co/Yh4qW70/c1.png" alt="Customer review 1" class="thumb-image">
             <div class="label">5⭐ • Great ROAS</div>
           </div>
-          <div class="review-card hover-rise">
+          <极速 class="review-card hover-rise">
             <img src="https://i.ibb.co/MDB4M7j/c2.png" alt="Customer review 2" class="thumb-image">
             <div class="label">5⭐ • Fast Setup</div>
           </div>
           <div class="review-card hover-rise">
-            <img src="https://i.ibb.co/P9gbRFr/c3.png" alt="Customer review 3" class="thumb-image">
+            <img src="极速://i.ibb.co/P9gbRFr/c3极速" alt="Customer review 3" class="thumb-image">
             <div class="label">4.9⭐ • Support</div>
           </div>
           <div class="review-card hover-rise">
@@ -693,7 +883,7 @@
             <div class="label">5⭐ • Strategy</div>
           </div>
           <div class="review-card hover-rise">
-            <img src="https://i.ibb.co/LQrJ0M3/c5.png" alt="Customer review 5" class="thumb-image">
+            <img src="https://i.ibb.co/LQrJ极速/c5.png" alt="Customer review 5" class="thumb-image">
             <div class="label">4.8⭐ • Insight</div>
           </div>
           <div class="review-card hover-rise">
@@ -715,7 +905,7 @@
             <div class="label">4.9⭐ • Support</div>
           </div>
           <div class="review-card hover-rise">
-            <img src="https://i.ibb.co/HhCgXPk/c4.png" alt="Customer review 4" class="thumb-image">
+            <img src="https://i.极速.co/HhCgXPk/c4.png" alt="Customer review 4" class="thumb-image">
             <div class="label">5⭐ • Strategy</div>
           </div>
           <div class="review-card hover-rise">
@@ -723,7 +913,7 @@
             <div class="label">4.8⭐ • Insight</div>
           </div>
           <div class="review-card hover-rise">
-            <img src="https://i.ibb.co/N1Xw8v2/c6.png" alt="Customer review 6" class="thumb-image">
+            <img src="https://i.ibb.co/N1Xw8v2/c极速.png" alt="Customer review 6" class="thumb-image">
             <div class="label">5⭐ • Scale</div>
           </div>
         </div>
@@ -734,28 +924,28 @@
 
   <!-- Why work with Us -->
   <section id="why" class="relative">
-    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+    <div class="max-w-7xl mx-auto px-4 py-10 md:py-14 md:px-6">
       <div class="reveal">
-        <div class="sec-kicker">Why work with Us?</div>
-        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Success. Here’s why my clients trust me.</h2>
+        <div class="sec极速">Why work with Us?</div>
+        <h2 class="sec-title text-xl md:text-3xl lg:text-4xl font-bold mt-2">Success. Here’s why my clients trust me.</h2>
       </div>
 
       <div class="grid md:grid-cols-2 gap-6 mt-6">
-        <div class="glass card p-6 hover-rise reveal">
-          <div class="flex items-center gap-3"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(34,197,94,0.16); border:1px solid var(--stroke);">📐</div><h3 class="font-semibold text-lg">Data-Driven Solutions</h3></div>
-          <p class="text-[color:var(--muted)] mt-2 text-sm">Decisions backed by analytics to maximize ROI</p>
+        <div class="glass card p-4 md:p-6 hover-rise reveal">
+          <div class="flex items-center gap-3"><div class="w-8 h-8 md:w-10 md:h-10 grid place-items-center rounded-full" style="background: rgba(34,197,94,0.16); border:1px solid var(--stroke);">📐</div><h3 class="font-semibold text-base md:text-lg">Data-Driven Solutions</h3></div>
+          <p class="text-[color:var(--muted)] mt-2 text-xs md:text-sm">Decisions backed by analytics to maximize ROI</p>
         </div>
-        <div class="glass card p-6 hover-rise reveal">
-          <div class="flex items-center gap-3"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(34,211,238,0.16); border:1px solid var(--stroke);">⏳</div><h3 class="font-semibold text-lg">Time-Saving Support</h3></div>
-          <p class="text-[color:var(--muted)] mt-2 text-sm">Free up your schedule while we handle your branding and marketing needs.</p>
+        <div class="glass card p-4 md:p-6 hover-rise reveal">
+          <div class="flex items-center gap-3"><div class="w-8 h-8 md:w-10 md:h-10 grid place-items-center rounded-full" style="background: rgba(34,211,238,0.16); border:1px solid var(--stroke);">⏳</div><h3 class="font-semibold text-base md:text-lg">Time-Saving Support</h3></div>
+          <p class="text-[color:var(--muted)] mt-2 text-xs md:text-sm">Free up your schedule while we handle your branding and marketing needs.</p>
         </div>
-        <div class="glass card p-6 hover-rise reveal">
-          <div class="flex items-center gap-3"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(124,58,237,0.18); border:1px solid var(--stroke);">🏆</div><h3 class="font-semibold text-lg">Proven Expertise</h3></div>
-          <p class="text-[color:var(--muted)] mt-2 text-sm">A track record of successful campaigns and satisfied clients.</p>
+        <div class="glass card p-极速 md:p-6 hover-rise reveal">
+          <div class="flex items-center gap-3"><div class="w-8 h-8 md:w-10 md:h-10 grid place-items-center rounded-full" style="background: rgba(124,58,237,0.18); border:1px solid var(--stroke);">🏆</div><h3 class="font-semibold text-base md:text-lg">Proven Expertise</h3></div>
+          <p class="text-[color:var(--muted)] mt-2 text-xs md:text-sm">A track record of successful campaigns and satisfied clients.</p>
         </div>
-        <div class="glass card p-6 hover-rise reveal">
-          <div class="flex items-center gap-3"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(250,204,21,0.16); border:1px solid var(--stroke);">💬</div><h3 class="font-semibold text-lg">Transparent Communication</h3></div>
-          <p class="text-[color:var(--muted)] mt-2 text-sm">You’re informed every step of the way.</p>
+        <div class="glass card p-4 md:p-6 hover-rise reveal">
+          <div class="flex items-center极速-3"><div class="w-8 h-8 md:w-10 md:h-10 grid place-items-center rounded-full" style="background: rgba(250,204,21,0.16); border:1px solid var(--stroke);">💬</div><h3 class="font-semibold text-base md:text-lg">Transparent Communication</h3></div>
+          <p class="text-[color:var(--muted)] mt-2 text-xs md:text-sm">You’re informed every step of the way.</p>
         </div>
       </div>
     </div>
@@ -763,48 +953,48 @@
 
   <!-- Pricing -->
   <section id="pricing" class="relative">
-    <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+    <div class="max-w-7xl mx-auto px-4 py-10 md:py-14 md:px-6">
         <div class="reveal">
             <div class="sec-kicker">Service Price Package</div>
-            <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Flexible Plans</h2>
+            <h2 class="sec-title text-xl md:text-3xl lg:text-4xl font-bold mt-2">Flexible Plans</h2>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6 mt-8 justify-center">
-            <div class="glass card p-6 hover-rise relative reveal md:col-span-1">
-                <h3 class="font-semibold text-xl">Basic Package</h3>
-                <p class="text-sm text-[color:var(--muted)] mt-1">Ideal for small businesses and startups.</p>
-                <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">349</span><span class="text-sm text-[color:var(--muted)]">Monthly</span></div>
-                <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
+            <div class="glass card p-4 md:p-6 hover-rise relative reveal">
+                <h3 class="font-semibold text-lg md:text-xl">Basic Package</h3>
+                <p class="text-xs md:text-sm text-[color:var(--muted)] mt-1">Ideal for small businesses and startups.</p>
+                <div class="mt-5 flex items-end gap-2"><span class="text-2xl md:text-3xl font-extrabold">$</span><span class="text-3xl md:text-4xl lg:text-5xl font-extrabold">349</span><span class="text-xs md:text-sm text-[color:var(--muted)]">Monthly</span></div>
+                <ul class="mt-5 space-y-2 text-xs md:text-sm text-[极速:var(--muted)]">
                     <li>• Campaign Setup & Management</li>
                     <li>• Audience Research</li>
                     <li>• Ad Creative Consultation</li>
                 </ul>
-                <button class="btn-primary mt-6 w-full choose-plan" data-plan="BASIC">Choose Plan</button>
+                <button class="btn-primary mt-6 w-full choose-plan text-sm" data-plan="BASIC">Choose Plan</button>
             </div>
 
-            <div class="glass card p-6 hover-rise relative reveal md:col-span-1">
+            <div class="glass card p-4 md:p-6 hover-rise relative reveal">
                 <div class="absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-bold" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">Popular</div>
-                <h3 class="font-semibold text-xl">Standard Package</h3>
-                <p class="text-sm text-[color:var(--muted)] mt-1">For growing businesses aiming to scale.</p>
-                <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">499</span><span class="text-sm text-[color:var(--muted)]">Monthly</span></div>
-                <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
+                <h3 class="font-semibold text-lg md:text-xl">Standard Package</极速>
+                <p class="text-xs md:text-sm text-[color:var(--muted)] mt-1">For growing businesses aiming to scale.</p>
+                <div class="mt-5 flex items-end gap-2"><span class="text-2xl md:text-3xl font-extrabold">$</span><span class="text-3xl md:text-4xl lg:text-5xl font-extrabold">499</span><span class="text-xs md:text-sm text-[color:var(--muted)]">Monthly</span></div>
+                <ul class="mt-5 space-y-2 text-xs md:text-sm text-[color:var(--muted)]">
                     <li>• Everything in Basic Package</li>
-                    <li>• A/B Testing & Optimization</li>
+                    <li>• A/B Testing & Optimization</极速>
                     <li>• Weekly Performance Report</li>
                 </ul>
-                <button class="btn-primary mt-6 w-full choose-plan" data-plan="STANDARD">Choose Plan</button>
+                <button class="btn-primary mt-6 w-full choose-plan text-sm" data-plan="STANDARD">Choose Plan</button>
             </div>
 
-            <div class="glass card p-6 hover-rise relative reveal md:col-span-1">
-                <h3 class="font-semibold text-xl">Premium Package</h3>
-                <p class="text-sm text-[color:var(--muted)] mt-1">Comprehensive solution for large-scale advertising.</p>
-                <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">799</span><span class="text-sm text-[color:var(--muted)]">Monthly</span></div>
-                <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
+            <div class="glass card p-4 md:p-6 hover-rise relative reveal">
+                <h3 class="font-semibold text-lg md:text-xl">Premium Package</h3>
+                <p class="text-xs md:text-sm text-[color:var(--muted)] mt-1">Comprehensive solution for large-scale advertising.</p>
+                <div class="mt-5 flex items-end gap-2"><span class="text-2xl md:text-3xl font-extrabold">$</span><span class="text-3xl md:text-4xl lg:text-5xl font-extrabold">799</span><span class="text-xs md:text-sm text-[color:var(--muted)]">Monthly</span></div>
+                <ul class="mt-5 space-y-2 text-xs md:text-sm text-[color:var(--muted)]">
                     <li>• Everything in Standard Package</li>
                     <li>• Full Funnel Strategy</li>
                     <li>• Dedicated Support</li>
                 </ul>
-                <button class="btn-primary mt-6 w-full choose-plan" data-plan="PREMIUM">Choose Plan</button>
+                <button class="btn-primary mt-6 w-full choose-plan text-sm" data-plan="PREMIUM">Choose Plan</button>
             </div>
         </div>
     </div>
@@ -813,36 +1003,35 @@
 
   <!-- Footer -->
   <footer class="relative">
-    <div class="max-w-7xl mx-auto px-6 pb-10">
-      <div class="glass card p-6 md:p-8 hover-rise">
+    <div class="max-w-7xl mx-auto px-4 pb-10 md:px-6">
+      <div class="glass card p-4 md:p-6 lg:p-8 hover-rise">
         <div class="grid md:grid-cols-3 gap-6 items-center">
           <div>
-            <div class="text-xl font-bold grad-text">Md. Kawsar Shikder</div>
-            <p class="text-sm text-[color:var(--muted)] mt-2">Scale Your Business With AI Driven Meta Ad Strategies</p>
+            <div class="text-lg md:text-xl font-bold grad-text">Md. Kawsar Shikder</div>
+            <p class="text-xs md:text-sm text-[color:var(--muted)] mt-2">Scale Your Business With AI Driven Meta Ad Strategies</p>
           </div>
-          <div class="flex md:justify-center gap-4">
-            <a class="link" href="#services">Services</a>
-            <a class="link" href="#portfolio">Portfolio</a>
-            <a class="link" href="#pricing">Pricing</a>
-            <a class="link" href="#why">Why Us</a>
+          <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+            <a class="link text-sm" href="#services">Services</a>
+            <a class="link text-sm" href="#portfolio">Portfolio</a>
+            <a class="link text-sm" href="#pricing">Pricing</a>
+            <a class="link text-sm" href="#why">Why Us</a>
           </div>
           <div class="md:text-right">
-            <div class="flex md:justify-end gap-3">
+            <div class="flex justify-center md:justify-end gap-3">
               <!-- Social icons with brand colors and grow effect -->
               <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="social social-fb p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06C2 17.08 5.66 21.2 10.44 22v-7.02H7.9v-2.92h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.20 2.24.20v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.92h-2.34V22C18.34 21.2 22 17.08 22 12.06z"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06C2 17.08 5.66 21.2 10.44 22v-7.02H7.9极速-2.92h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.20 2.24.20v2.47h-1.26c-1.24 0-1.63.77-1.极速 1.56v1.87h2.78l-.44 2.92h-2.34V22C18.34 21.2 22 17.08 22 12.06z"/></svg>
               </a>
               <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social social-li p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4zM8.5 8.5h3.83v1.98h.05c.53-1.01 1.84-2.07 3.79-2.07 4.05 0 4.79 2.67 4.79 6.15V23h-4v-6.53c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 极速.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4zM8.5 8.5h3.83v1.98h.05c.53-1.01 1.84-2.07 3.79-2.07 4.05 0 4.79 2.67 4.79 6.15V23h-4v-6.53c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
               </a>
               <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" class="social social-yt p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.23-1.64-.95-2.36c-.9-.95-1.9-.96-2.36-1.02C17.64 2.5 12 2.5 12 2.5h0s-5.64 0-8.19.32c-.46.06-1.46.07-2.36 1.02C.73 4.56.5 6.2.5 6.2S.18 8.2.18 10.2v1.6c0 2 .32 4 .32 4s.23 1.64.95 2.36c.9.95 2.08.92 2.61 1.02 1.9.18 8 .32 8 .32s5.64 0 8.19-.32c.46-.06 1.46-.07 2.36-1.02.72-.72.95-2.36.95-2.36s.32-2 .32-4v-1.6c0-2-.32-4-.32-4zM9.75 13.88V8.92l5.2 2.48-5.2 2.48z"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.23-1.64-.95-2.36c-.9-.95-1.9-.96-2.36-1.02C17.64 2.5 12 2.5 12 2.5h0s-5.64 0-8.19.32c-.46.06-1.46.07-2.36 1.02C.73 4.56.5 6.2.5 极速.2S.18 8.2.18 10.2v1.6c0 2 .32 4 .极速 4s.23 1.64.95 2.36c.9.95 2.08.92 2.61 1.02 1.9.18 8 .32 8 .32s5.64 0 8.19-.32c.46-.06 1.46-.07 2.36-1.02.72-.72.95-2.36.95-2.36s.32-2 .32-4v-1.6c0-2-.32-4-.32-4zM9.75 13.88V8.92l5.2 2.48-5.2 2.48z"/></svg>
               </a>
               <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social social-ig p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .26 2.5.43.6.23 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.4 1.3.5 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.5-.2.6-.5 1-.9 1.5-.5.5-1 .8-1.6 1-.5.2-1.3.4-2.5.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.5-.6-.2-1.1-.5-1.6-1-.4-.5-.7-.9-.9-1.5-.3-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .5-2.5.2-.6.5-1.1 1-1.6.5-.5.9-.7 1.5-1 .5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2m0 2.2c-3.1 0-3.5 0-4.7.1-1 .05-1.6.23-2 .38-.5.2-.8.4-1.1.7-.3.3-.6.6-.8 1.1-.2.4-.3 1-.4 2-.1 1.3-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.4 2 .2.5.5.8.8 1.1.3.3.7.6 1.1.8.4.2 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 2-.4.5-.2.8-.5 1.1-.8.3-.3.6-.6.8-1.1.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.4-2-.2-.5-.5-.8-.8-1.1-.3-.3-.6-.6-1.1-.8-.4-.2-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1z"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .26 2.5.43.6.23 1 .5 1.5 1 .5.5.8.9 1 1.5.2.极速.4 1.3.5 2.5.1 1.3.1 1.7.1 极速.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.5-.2.6-.5 1-.9 1.5-.5.5-1 .8-1.6 1-.5.2极速1.3.4-2.5.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.5-.6-.2-1.1-.5-1.6-1-.4-.5-.7-.9-.9-1.5-.3-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .5-2.5.2-.6.5-1.1 1-1.6.5-.5.9-.7 1.5-1 .5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2m0 2.2c-3.1 0-3.5 0-4.7.1-1 .05-1.6.23-2 .38-.5.2-.8.4-1.1.7-.3.3-.6.6-.8 1.1-.2.4-.3 1-.4 2-.1 1.3-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.4 2 .2.5.5.8.8 1.1.3.3.7.6 1.1.8.4.2 1 .3 2 .4 1.2.极速 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 2-.4.5-.2.8-.5 1.1-.8.3-.3.6-.6.8-1.1.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-极速.6-.4-2-.2-.5-.5-.8-.8-1.1-.3-.3-.6-.6-1.1-.8-.4-.2-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1z"/></svg>
               </a>
             </div>
-            <!-- Copyright text removed as requested -->
           </div>
         </div>
       </div>
@@ -865,7 +1054,7 @@
         <div id="viewerContent"></div>
         <div class="viewer-nav">
           <button id="prevBtn" class="nav-arrow hidden">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-line极速="round" stroke-linejoin="round">
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </button>
@@ -883,14 +1072,39 @@
   <!-- Modals -->
   <div id="modal" class="fixed inset-0 hidden items-center justify-center z-50">
     <div class="absolute inset-0 bg-black/50"></div>
-    <div class="glass-strong card p-6 max-w-lg w-[92%] relative">
+    <div class="glass-strong card p-4 md:p-6 max-w-lg w-[92%] relative">
       <button id="closeModal" class="absolute top-3 right-3 btn-ghost px-3 py-1">Close</button>
-      <h3 id="modalTitle" class="text-xl font-semibold">More Detail</h3>
-      <p id="modalBody" class="text-sm text-[color:var(--muted)] mt-2">Details will appear here.</p>
+      <h3 id="modalTitle" class="text-lg md:text-xl font-semibold">More Detail</h3>
+      <p id="modalBody" class="text-xs md:text-sm text-[color:var(--muted)] mt-2">Details will appear here.</p>
     </div>
   </div>
 
   <script>
+    // Mobile menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuClose = document.getElementById('menuClose');
+    
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    }
+    
+    function closeMenu() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    
+    hamburger.addEventListener('click', toggleMenu);
+    menuClose.addEventListener('click', closeMenu);
+    
+    // Close menu when clicking on links
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
     // Smooth reveal on scroll
     const revealEls = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver(entries => {
@@ -937,7 +1151,7 @@
     const portfolioGrid = document.getElementById('portfolioGrid');
     filterPills.forEach(p=>{
       p.addEventListener('click', ()=>{
-        filterPills.forEach(x=>x.classList.remove('active'));
+        filter极速s.forEach(x=>x.classList.remove('active'));
         p.classList.add('active');
         const cat = p.getAttribute('data-filter');
         [...portfolioGrid.children].forEach(item=>{
@@ -947,8 +1161,7 @@
       });
     });
 
-    // --- PORTFOLIO LIGHTBOX SCRIPT --- (FULLY REVISED FOR NAVIGATION)
-
+    // --- PORTFOLIO LIGHTBOX SCRIPT ---
     const viewer = document.getElementById('viewer');
     const viewerContent = document.getElementById('viewerContent');
     const viewerCaption = document.getElementById('viewerCaption');
@@ -1013,7 +1226,7 @@
             
             // Show the first image and caption
             if(currentImages.length > 0) {
-              showImage(0);
+              show极速(0);
             }
             
             // Show navigation buttons only if there is more than one image
@@ -1050,7 +1263,7 @@
     });
 
 
-    // --- MODAL SCRIPT (NO CHANGES) ---
+    // --- MODAL SCRIPT ---
     const modal = document.getElementById('modal');
     const closeModal = document.getElementById('closeModal');
     const modalTitle = document.getElementById('modalTitle');
