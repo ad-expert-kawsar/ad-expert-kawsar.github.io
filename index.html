@@ -737,86 +737,89 @@
 
   <!-- Pricing -->
   <section class="relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-14">
-        <div class="reveal">
-            <div class="sec-kicker">Service Price Package</div>
-            <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Flexible Plans</h2>
-        </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+          <div class="reveal text-center">
+              <div class="sec-kicker">Service Price Package</div>
+              <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Flexible Plans</h2>
+          </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 justify-center">
-            <div class="glass card p-6 hover-rise relative reveal md:col-span-1">
-                <h3 class="font-semibold text-xl">Basic Package</h3>
-                <p class="text-sm text-[color:var(--muted)] mt-1">Ideal for small businesses and startups.</p>
-                <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">349</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
-                <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
-                    <li>• Campaign Setup & Management</li>
-                    <li>• Audience Research</li>
-                    <li>• Ad Creative Consultation</li>
-                </ul>
-                <button class="btn-primary mt-6 w-full choose-plan" data-plan="BASIC">Choose Plan</button>
-            </div>
+          <!-- Updated Responsive Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+              <!-- Basic Package -->
+              <div class="glass card p-6 hover-rise relative reveal flex flex-col">
+                  <h3 class="font-semibold text-xl">Basic Package</h3>
+                  <p class="text-sm text-[color:var(--muted)] mt-1">Ideal for small businesses and startups.</p>
+                  <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">349</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
+                  <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)] flex-grow">
+                      <li>• Campaign Setup & Management</li>
+                      <li>• Audience Research</li>
+                      <li>• Ad Creative Consultation</li>
+                  </ul>
+                  <button class="btn-primary mt-6 w-full choose-plan" data-plan="BASIC">Choose Plan</button>
+              </div>
 
-            <div class="glass card p-6 hover-rise relative reveal md:col-span-1">
-                <div class="absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-bold" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">Popular</div>
-                <h3 class="font-semibold text-xl">Standard Package</h3>
-                <p class="text-sm text-[color:var(--muted)] mt-1">For growing businesses aiming to scale.</p>
-                <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">499</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
-                <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
-                    <li>• Everything in Basic Package</li>
-                    <li>• A/B Testing & Optimization</li>
-                    <li>• Weekly Performance Report</li>
-                </ul>
-                <button class="btn-primary mt-6 w-full choose-plan" data-plan="STANDARD">Choose Plan</button>
-            </div>
+              <!-- Standard Package -->
+              <div class="glass card p-6 hover-rise relative reveal flex flex-col border-2 border-[color:var(--accent2)]">
+                  <div class="absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-bold" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">Popular</div>
+                  <h3 class="font-semibold text-xl">Standard Package</h3>
+                  <p class="text-sm text-[color:var(--muted)] mt-1">For growing businesses aiming to scale.</p>
+                  <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">499</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
+                  <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)] flex-grow">
+                      <li>• Everything in Basic Package</li>
+                      <li>• A/B Testing & Optimization</li>
+                      <li>• Weekly Performance Report</li>
+                  </ul>
+                  <button class="btn-primary mt-6 w-full choose-plan" data-plan="STANDARD">Choose Plan</button>
+              </div>
 
-            <div class="glass card p-6 hover-rise relative reveal mt-6 md:mt-0 md:col-span-2 lg:col-span-1 lg:mt-0">
-                <h3 class="font-semibold text-xl">Premium Package</h3>
-                <p class="text-sm text-[color:var(--muted)] mt-1">Comprehensive solution for large-scale advertising.</p>
-                <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">799</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
-                <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
-                    <li>• Everything in Standard Package</li>
-                    <li>• Full Funnel Strategy</li>
-                    <li>• Dedicated Support</li>
-                </ul>
-                <button class="btn-primary mt-6 w-full choose-plan" data-plan="PREMIUM">Choose Plan</button>
-            </div>
-        </div>
-    </div>
-</section>
-
+              <!-- Premium Package -->
+              <div class="glass card p-6 hover-rise relative reveal flex flex-col md:col-span-2 lg:col-span-1">
+                  <h3 class="font-semibold text-xl">Premium Package</h3>
+                  <p class="text-sm text-[color:var(--muted)] mt-1">Comprehensive solution for large-scale advertising.</p>
+                  <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">799</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
+                  <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)] flex-grow">
+                      <li>• Everything in Standard Package</li>
+                      <li>• Full Funnel Strategy</li>
+                      <li>• Dedicated Support</li>
+                  </ul>
+                  <button class="btn-primary mt-6 w-full choose-plan" data-plan="PREMIUM">Choose Plan</button>
+              </div>
+          </div>
+      </div>
+  </section>
 
   <!-- Footer -->
   <footer class="relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 pb-10">
-      <div class="glass card p-6 md:p-8 hover-rise">
-        <div class="grid md:grid-cols-2 gap-8 items-center text-center md:text-left">
-          <div class="space-y-2">
-            <div class="text-xl font-bold grad-text">Md. Kawsar Shikder</div>
-            <p class="text-sm text-[color:var(--muted)]">Scale Your Business With AI Driven Meta Ad Strategies</p>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+          <div class="glass card p-6 md:p-8 hover-rise">
+              <div class="grid md:grid-cols-2 gap-8 items-center text-center md:text-left">
+                  <div class="space-y-2">
+                      <div class="text-xl font-bold grad-text">Md. Kawsar Shikder</div>
+                      <p class="text-sm text-[color:var(--muted)]">Scale Your Business With AI Driven Meta Ad Strategies</p>
+                  </div>
+                  <div class="md:text-right">
+                      <div class="flex justify-center md:justify-end gap-3">
+                          <!-- Social icons -->
+                          <a href="https://www.facebook.com/Shikder601/" target="_blank" rel="noopener" aria-label="Facebook" class="social social-fb p-2 inline-flex items-center justify-center">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06C2 17.08 5.66 21.2 10.44 22v-7.02H7.9v-2.92h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.20 2.24.20v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.92h-2.34V22C18.34 21.2 22 17.08 22 12.06z"/></svg>
+                          </a>
+                          <a href="https://www.linkedin.com/in/md-kawsar-shikder-036947280/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social social-li p-2 inline-flex items-center justify-center">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4zM8.5 8.5h3.83v1.98h.05c.53-1.01 1.84-2.07 3.79-2.07 4.05 0 4.79 2.67 4.79 6.15V23h-4v-6.53c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+                          </a>
+                          <a href="https://www.instagram.com/kshikder601/" target="_blank" rel="noopener" aria-label="Instagram" class="social social-ig p-2 inline-flex items-center justify-center">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.2,5.2 0,0,1,16.2 22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.2,5.2 0,0,1,7.8 2M7.6,4A3.6,3.6 0,0,0,4 7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0,0,0,20 16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0,0,1,18.5 6.75A1.25,1.25 0,0,1,17.25 8A1.25,1.25 0,0,1,16 6.75A1.25,1.25 0,0,1,17.25 5.5M12,7A5,5 0,0,1,17 12A5,5 0,0,1,12 17A5,5 0,0,1,7 12A5,5 0,0,1,12 7M12,9A3,3 0,0,0,9 12A3,3 0,0,0,12 15A3,3 0,0,0,15 12A3,3 0,0,0,12 9Z"/></svg>
+                          </a>
+                          <a href="https://x.com/kawsar60048" target="_blank" rel="noopener" aria-label="Twitter" class="social social-tw p-2 inline-flex items-center justify-center">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 7.184L18.901 1.153ZM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404Z"/></svg>
+                          </a>
+                          <a href="https://www.fiverr.com/s/WEGrbjX" target="_blank" rel="noopener" aria-label="Fiverr" class="social social-fv p-2 inline-flex items-center justify-center">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.16 3H15.63v11.33h-3.3V3H8.8v11.33H5.5V3H2v15h11.23c0 1.39.46 2.45 1.34 3.17.88.72 2.15 1.1 3.82 1.1 1.23 0 2.3-.2 3.22-.6V18.2c-.89.4-1.87.6-2.92.6-1.12 0-1.93-.22-2.4-.66-.48-.44-.72-1.15-.72-2.14H22V3h-2.84v.01Z"/></svg>
+                          </a>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="md:text-right">
-            <div class="flex justify-center md:justify-end gap-3">
-              <!-- Social icons -->
-              <a href="https://www.facebook.com/Shikder601/" target="_blank" rel="noopener" aria-label="Facebook" class="social social-fb p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06C2 17.08 5.66 21.2 10.44 22v-7.02H7.9v-2.92h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.20 2.24.20v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.92h-2.34V22C18.34 21.2 22 17.08 22 12.06z"/></svg>
-              </a>
-              <a href="https://www.linkedin.com/in/md-kawsar-shikder-036947280/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social social-li p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4zM8.5 8.5h3.83v1.98h.05c.53-1.01 1.84-2.07 3.79-2.07 4.05 0 4.79 2.67 4.79 6.15V23h-4v-6.53c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
-              </a>
-              <a href="https://www.instagram.com/kshikder601/" target="_blank" rel="noopener" aria-label="Instagram" class="social social-ig p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.2,5.2 0,0,1,16.2 22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.2,5.2 0,0,1,7.8 2M7.6,4A3.6,3.6 0,0,0,4 7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0,0,0,20 16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0,0,1,18.5 6.75A1.25,1.25 0,0,1,17.25 8A1.25,1.25 0,0,1,16 6.75A1.25,1.25 0,0,1,17.25 5.5M12,7A5,5 0,0,1,17 12A5,5 0,0,1,12 17A5,5 0,0,1,7 12A5,5 0,0,1,12 7M12,9A3,3 0,0,0,9 12A3,3 0,0,0,12 15A3,3 0,0,0,15 12A3,3 0,0,0,12 9Z"/></svg>
-              </a>
-              <a href="https://x.com/kawsar60048" target="_blank" rel="noopener" aria-label="Twitter" class="social social-tw p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 7.184L18.901 1.153ZM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404Z"/></svg>
-              </a>
-              <a href="https://www.fiverr.com/s/WEGrbjX" target="_blank" rel="noopener" aria-label="Fiverr" class="social social-fv p-2 inline-flex items-center justify-center">
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.16 3H15.63v11.33h-3.3V3H8.8v11.33H5.5V3H2v15h11.23c0 1.39.46 2.45 1.34 3.17.88.72 2.15 1.1 3.82 1.1 1.23 0 2.3-.2 3.22-.6V18.2c-.89.4-1.87.6-2.92.6-1.12 0-1.93-.22-2.4-.66-.48-.44-.72-1.15-.72-2.14H22V3h-2.84v.01Z"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
   </footer>
 
   <!-- Image Viewer (Portfolio Lightbox) -->
