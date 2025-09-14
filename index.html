@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Md Kawsar Shikder</title>
+  <title>Md Kawsar Shikder - Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -21,19 +21,31 @@
       --accent:#7c3aed;
       --accent2:#22d3ee;
     }
+    
+    /* Reset margins and padding to prevent overflow issues */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+    
     body{
       font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
       color: var(--text);
       background: radial-gradient(1200px 800px at 10% -10%, rgba(99,102,241,0.15), transparent 60%),
                   radial-gradient(1200px 800px at 110% 10%, rgba(34,211,238,0.12), transparent 60%),
                   linear-gradient(180deg, var(--bg1), var(--bg2));
-      overflow-x: hidden;
+      /* Removed overflow-x: hidden to prevent double scrollbar */
+      overflow-y: auto;
     }
+    
     /* Main wrapper to prevent horizontal scroll */
     .main-wrapper {
       position: relative;
       width: 100%;
+      max-width: 100%;
     }
+    
     /* Glassmorphism */
     .glass {
       background: var(--glass);
@@ -42,6 +54,7 @@
       border: 1px solid var(--stroke);
       box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06);
     }
+    
     .glass-strong {
       background: var(--glass-strong);
       backdrop-filter: blur(18px);
@@ -49,18 +62,24 @@
       border: 1px solid rgba(255,255,255,0.22);
       box-shadow: 0 10px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1);
     }
+    
     .grad-text {
       background: linear-gradient(90deg, var(--grad2), var(--grad3), var(--grad1));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
+    
     /* Decorative blobs */
     .blob { position: absolute; z-index: -1; filter: blur(60px); opacity: .35; pointer-events: none; mix-blend-mode: screen; animation: float 18s ease-in-out infinite; }
     .blob-1 { width: 460px; height: 460px; top: -120px; left: -120px; background: radial-gradient(circle at 30% 30%, #60a5fa, transparent 60%);}
     .blob-2 { width: 420px; height: 420px; bottom: -140px; right: -100px; background: radial-gradient(circle at 70% 70%, #22d3ee, transparent 60%); animation-delay: 3s;}
     .blob-3 { width: 360px; height: 360px; top: 40%; left: 60%; background: radial-gradient(circle at 50% 50%, #a78bfa, transparent 60%); animation-delay: 6s;}
-    @keyframes float { 0%,100% { transform: translateY(0) translateX(0) scale(1);} 50% { transform: translateY(20px) translateX(-10px) scale(1.05);} }
+    
+    @keyframes float { 
+      0%,100% { transform: translateY(0) translateX(0) scale(1);} 
+      50% { transform: translateY(20px) translateX(-10px) scale(1.05);} 
+    }
 
     /* Ring portrait -- RESPONSIVE UPDATE */
     .ring-wrap {
@@ -68,6 +87,7 @@
       width: 300px; /* Mobile size */
       height: 300px;
     }
+    
     .ring {
       position: absolute;
       inset: 0;
@@ -79,6 +99,7 @@
                   0 0 15px 2px rgba(139, 92, 246, 0.4),
                   0 0 25px 4px rgba(34, 211, 238, 0.3);
     }
+    
     .portrait {
       width: 100%;
       height: 100%;
@@ -120,19 +141,23 @@
       }
     }
     
-    @keyframes rotate { 0%{ transform: rotate(0deg);} 100%{ transform: rotate(360deg);} }
+    @keyframes rotate { 
+      0%{ transform: rotate(0deg);} 
+      100%{ transform: rotate(360deg);} 
+    }
+    
     .portrait-stage {
       position: absolute;
       inset: 0;
       display: grid;
       place-items: center;
     }
+    
     .portrait img.user-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
 
     /* Buttons */
     .btn-primary {
@@ -141,15 +166,22 @@
       box-shadow: 0 10px 24px rgba(124,58,237,0.35);
       transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
     }
+    
     .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.07); box-shadow: 0 14px 34px rgba(124,58,237,0.45);}
+    
     .btn-ghost {
       background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid var(--stroke);
       border-radius: 14px; padding: .85rem 1.2rem; transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
     }
+    
     .btn-ghost:hover { transform: translateY(-1px); background: rgba(255,255,255,0.1); box-shadow: 0 10px 24px rgba(0,0,0,0.25);}
+    
     .sec-title { letter-spacing: .02em; }
+    
     .sec-kicker { color: var(--accent2); font-weight: 600; text-transform: uppercase; letter-spacing: .18em; font-size: .8rem; }
+    
     .card { border-radius: 18px; overflow: hidden; }
+    
     .hover-rise{ transition: transform .18s ease, box-shadow .18s ease;}
     .hover-rise:hover{ transform: translateY(-4px); box-shadow: 0 20px 44px rgba(0,0,0,0.35);}
 
@@ -166,7 +198,12 @@
     .grid-item .mask{ position:absolute; inset:0; background: radial-gradient(120% 100% at 100% 100%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 65%); }
     .thumb{ width:100%; height:100%; background: linear-gradient(120deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03), rgba(255,255,255,0.08)); background-size: 200% 200%; animation: shimmer 3s ease infinite; }
     .thumb-image { width: 100%; height: 100%; object-fit: cover; }
-    @keyframes shimmer{ 0%{ background-position: 0% 50%;} 50%{ background-position: 100% 50%;} 100%{ background-position: 0% 50%;} }
+    
+    @keyframes shimmer{ 
+      0%{ background-position: 0% 50%;} 
+      50%{ background-position: 100% 50%;} 
+      100%{ background-position: 0% 50%;} 
+    }
 
     /* Lightbox viewer */
     #viewer {
@@ -334,7 +371,11 @@
     .review-card{ width: 300px; aspect-ratio: 4/3; border:1px solid var(--stroke); border-radius:16px; overflow:hidden; background: rgba(255,255,255,0.04); position:relative; }
     .review-card .thumb{ animation-duration: 4s; }
     .review-card .label{ position:absolute; bottom:10px; left:12px; padding:.25rem .5rem; border-radius:9999px; background: rgba(0,0,0,0.35); font-size:.8rem; }
-    @keyframes slideLeft{ 0%{ transform: translateX(0);} 100%{ transform: translateX(-50%);} }
+    
+    @keyframes slideLeft{ 
+      0%{ transform: translateX(0);} 
+      100%{ transform: translateX(-50%);} 
+    }
 
     /* Footer links */
     .link:hover{ color: var(--accent2); }
@@ -347,7 +388,6 @@
     .social-tw svg { color: #ffffff; } /* Twitter (X) color */
     .social-ig svg { color: #E4405F; }
     .social-fv svg { color: #1dbf73; } /* Fiverr color */
-
 
     /* Smooth entrance */
     .reveal { opacity: 0; transform: translateY(16px); transition: all .6s ease; }
@@ -377,7 +417,7 @@
 
           <!-- New personal headline -->
           <div class="mt-6 mb-2">
-            <div class="text-xl md:text-2xl font-semibold">I’m <span class="grad-text font-extrabold">Md. Kawsar Shikder</span>,</div>
+            <div class="text-xl md:text-2xl font-semibold">I'm <span class="grad-text font-extrabold">Md. Kawsar Shikder</span>,</div>
             <div class="text-2xl md:text-3xl font-extrabold mt-1">Shopify Facebook Ads Specialist </div>
           </div>
 
@@ -401,10 +441,10 @@
               <div class="flex items-start gap-4">
                 <div class="w-6 text-center text-[color:var(--accent2)] pt-1">
                   <!-- Phone Icon -->
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 极端 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 极端l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 </div>
                 <div class="flex-1">
-                  <span class="text-sm text-[color:var(--muted)]">Phone</span>
+                  <span class="text极端 text-[color:var(--muted)]">Phone</span>
                   <a href="tel:+8801870860246" class="block text-base link hover:text-[color:var(--grad1)] transition-colors">+8801870860246</a>
                 </div>
               </div>
@@ -413,11 +453,11 @@
               <div class="flex items-start gap-4">
                 <div class="w-6 text-center text-[color:var(--accent2)] pt-1">
                   <!-- Email Icon -->
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.极端的-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </div>
                 <div class="flex-1">
                   <span class="text-sm text-[color:var(--muted)]">Email</span>
-                  <a href="mailto:adexpertkawsar99@gmail.com" class="block text-base link hover:text-[color:var(--grad1)] transition-colors break-all">adexpertkawsar99@gmail.com</a>
+                  <a href="mailto:adexpertkawsar99@gmail.com" class="block text-base link hover:text-[极端的:var(--grad1)] transition-colors break-all">adexpertkawsar99@gmail.com</a>
                 </div>
               </div>
               
@@ -425,7 +465,7 @@
               <div class="flex items-start gap-4">
                 <div class="w-6 text-center text-[color:var(--accent2)] pt-1">
                   <!-- Facebook Icon -->
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 极端的 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </div>
                 <div class="flex-1">
                   <span class="text-sm text-[color:var(--muted)]">Facebook</span>
@@ -439,7 +479,7 @@
             <div class="mt-6">
               <a id="downloadCV" class="btn-primary flex w-full items-center justify-center gap-2" href="/cv/cv.pdf" download="cv.pdf">
                 <span>Download CV</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3极端的12m0 0l-4-4m4 4l4-4M4 21h16" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
           </div>
@@ -464,13 +504,13 @@
   <!-- Counters -->
   <section class="relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-14">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:极端的6">
         <div class="glass card p-5 text-center hover-rise reveal">
           <div class="text-3xl md:text-4xl font-extrabold grad-text"><span data-count="3">3</span>+</div>
           <div class="mt-1 text-sm text-[color:var(--muted)]">Years Experience</div>
         </div>
-        <div class="glass card p-5 text-center hover-rise reveal">
-          <div class="text-3xl md:text-4xl font-extrabold grad-text"><span data-count="160">160</span>+</div>
+        <div class="glass card p极端的 text-center hover-rise reveal">
+          <div class="text-3xl md:text-4xl font-extrabold grad-text"><极端的 data-count="160">160</span>+</div>
           <div class="mt-1 text-sm text-[color:var(--muted)]">Project Complete</div>
         </div>
         <div class="glass card p-5 text-center hover-rise reveal">
@@ -507,7 +547,7 @@
         <div class="glass card p-6 hover-rise reveal">
           <div class="flex items-center justify-between">
             <h3 class="font-semibold text-xl">Web Analytics & Tracking</h3>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full" style="background: rgba(110,231,183,0.16); border:1px solid var(--stroke);">📊</span>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full" style="极端的: rgba(110,231,183,0.16); border:1px solid var(--stroke);">📊</span>
           </div>
           <p class="text-[color:var(--muted)] mt-3 text-sm">Facebook Pixel, Conversion API, Server-Side Tracking, GA4, Google Tag Manager, dashboards that tell the truth.</p>
           <button data-service="analytics" class="btn-ghost mt-4 more-detail">More Detail</button>
@@ -521,8 +561,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-14">
       <div class="reveal">
         <div class="sec-kicker">My Skills</div>
-        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Core Expertise</h2>
-      </div>
+        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Core Expertise</极端的</div>
 
       <div class="flex flex-wrap gap-3 mt-6">
         <button class="pill active" data-skilltab="meta">Meta Ads</button>
@@ -536,7 +575,7 @@
           <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Retargeting & Funnels</h3><span class="text-sm text-[color:var(--muted)]">90%</span></div>
           <div class="skill-track mt-3"><div class="skill-fill" style="width:90%"></div></div>
           <div class="flex items-center justify-between mt-6"><h3 class="font-semibold">Creative Testing</h3><span class="text-sm text-[color:var(--muted)]">91%</span></div>
-          <div class="skill-track mt-3"><div class="skill-fill" style="width:91%"></div></div>
+          <div class="skill-track mt极端的"><div class="skill-fill" style="width:91%"></div></div>
         </div>
 
         <div class="glass card p-6 reveal skill-panel hidden" data-panel="analytics">
@@ -578,28 +617,28 @@
         <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Facebook Re-Targeting Sales Campaign" data-description="My client runs a business in the agriculture-based herbal diet supplement industry. His biggest frustration was that sales were not coming in, even after hiring someone else for 15 days, which unfortunately failed to deliver results. Later, he reached out to me, and I took over the project. I started by analyzing and optimizing his business setup. I spent several days on in-depth research to understand his target audience and also studied his competitors to identify the best opportunities. After carefully preparing the strategy, I launched highly targeted Facebook Ads campaigns. Soon, the results started to improve significantly, and the client was extremely happy with the outcome. This project not only boosted his traffic and sales but also built trust in my ability to turn failing campaigns into successful ones.">
           <img src="/myprojects/facebook_ads/2.jpeg" alt="Facebook Re-Targeting Sales Campaign" class="thumb-image">
           <div class="mask"></div>
-          <div class="absolute bottom-3 left-3 right-3"><span class="text-sm font-semibold">Facebook Re-Targeting Campaign</span></div>
+          <div class="absolute bottom-3 left-3 right-3"><span class="text-sm font-semib极端的">Facebook Re-Targeting Campaign</span></div>
         </div>
 
-        <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Sales-Boosting Meta Ads for Baby Carrier Bags" data-description="The client is based in Bangladesh and does not have a website yet. He wanted to start generating sales online for his baby carrier bags before investing in a full website. He approached me to help drive online sales for two of his products. I explained that sales ultimately depend on the customer's interest, budget, and need for the product, and while I could guarantee targeted traffic, I could not guarantee purchases. He hired me for a 7-day project, and I focused on understanding the target audience, optimizing ad strategy, and creating highly targeted Meta Ads campaigns. By aligning with his expectations and demands, I successfully delivered measurable results, helping him achieve engagement and potential sales interest. This project demonstrates my ability to turn strategy into results even for clients without a website and with limited product offerings.">
+        <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Sales-Boosting Meta Ads for Baby Carrier Bags" data-description="The client is based in Bangladesh and does not have a website yet. He wanted to start generating sales online for his baby carrier bags before investing in a full website. He approached me to help drive online sales for two of his products. I explained that sales ultimately depend on the customer's interest, budget, and need for the product, and while I could guarantee targeted traffic, I could not guarantee purchases. He hired me for a 7-day project, and I focused极端的 understanding the target audience, optimizing ad strategy, and creating highly targeted Meta Ads campaigns. By aligning with his expectations and demands, I successfully delivered measurable results, helping him achieve engagement and potential sales interest. This project demonstrates my ability to turn strategy into results even for clients without a website and with limited product offerings.">
           <img src="/myprojects/facebook_ads/3.jpeg" alt="Sales-Boosting Meta Ads for Baby Carrier Bags" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3"><span class="text-sm font-semibold">Meta Ads for Baby Carrier Bags</span></div>
         </div>
 
-        <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Meta Ads Campaign for Fan Sales" data-description="This project was for an electric fan product. The client’s main goal was to generate online sales. Based on their requirements, I conducted thorough research on the target audience, competitors, and optimal ad strategies. I managed the project end-to-end, creating highly targeted Meta Ads campaigns to drive engagement and potential sales. The results met the client’s expectations, delivering measurable performance and leaving the client satisfied with the outcome. This project highlights my ability to understand client needs, implement effective ad strategies, and achieve tangible results for consumer electronics products.">
+        <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Meta Ads Campaign for Fan Sales" data-description="This project was for an electric fan product. The client's main goal was to generate online sales. Based on their requirements, I conducted thorough research on the target audience, competitors, and optimal ad strategies. I managed the project end-to-end, creating highly targeted Meta Ads campaigns to drive engagement and potential sales. The results met the client's expectations, delivering measurable performance and leaving the client satisfied with the outcome. This project highlights my ability to understand client needs, implement effective ad strategies, and achieve tangible results for consumer electronics products.">
           <img src="/myprojects/facebook_ads/4.jpeg" alt="Meta Ads Campaign for Fan Sales" class="thumb-image">
           <div class="mask"></div>
-          <div class="absolute bottom-3 left-3 right-3"><span class="text-sm font-semibold">Meta Ads for Fan Sales</span></div>
+          <div class="absolute bottom-3 left-3 right-3"><span class="text-sm font-semibold">Meta Ads for Fan Sales</极端的></div>
         </div>
 
-        <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Results from Meta Ads Campaigns I Ran" data-description="Here are the detailed and measurable results I successfully delivered for my client during our collaboration, showcasing the impact of my strategies.">
+        <div class="grid-item hover-rise reveal"极端的 data-cat="Meta Ads" data-title="Results from Meta Ads极端的Campaigns I Ran" data-description="Here are the detailed and measurable results I successfully delivered for my client during our collaboration, showcasing the impact of my strategies.">
           <img src="/myprojects/facebook_ads/5.jpeg" alt="Results from Meta Ads Campaigns I Ran" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3"><span class="text-sm font-semibold">Meta Ads Campaign Results</span></div>
         </div>
         
-        <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Baby Product Sales Campaign (A/B Test & Results)" data-description="This project was entirely focused on baby products. The client lacked a strong online presence and was facing issues with low sales and poor website traffic. After seeing my gig, they hired me to manage their project. I first analyzed their products, conducted research, and identified the potential target audience. Initially, I ran a campaign, but the results were not satisfactory. To improve performance, I launched an A/B test campaign named “4-Bicc-AB-Kids Toy Product Sales DT”. Through this A/B test, I successfully drove significant traffic, resulting in improved engagement and increased sales on the client’s website." data-images="/myprojects/facebook_ads/6.1.jpeg,/myprojects/facebook_ads/6.2.jpeg">
+        <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Baby Product Sales Campaign (A/B Test & Results)" data-description="This project was entirely focused on baby products. The client lacked a strong online presence and was facing issues with low sales and poor website traffic. After seeing my gig, they hired me to manage their project. I first analyzed their products, conducted research, and identified the potential target audience. Initially, I ran a campaign, but the results were not satisfactory. To improve performance, I launched an A/B test campaign named "4-Bicc-AB-Kids Toy Product Sales DT". Through this A/B test, I successfully drove significant traffic, resulting in improved engagement and increased sales on the client's website." data-images="/myprojects/facebook_ads/6.1.jpeg,/myprojects/facebook_ads/6.2.jpeg">
           <img src="/myprojects/facebook_ads/6.1.jpeg" alt="Baby Product Sales Campaign" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3"><span class="text-sm font-semibold">Baby Product Sales Campaign (A/B Test)</span></div>
@@ -617,7 +656,7 @@
           <div class="absolute bottom-3 left-3 right-3"><span class="text-sm font-semibold">Shopify Performance Analytics</span></div>
         </div>
 
-        <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Facebook Ads Campaign Results" data-description="Managed and optimized Facebook ad campaigns that generated website purchases and clicks at a low cost per result. Focused on smart targeting, ad testing, and budget control to boost sales and ROI.">
+        <div class="极端的-item hover-rise reveal" data-cat="Meta Ads" data-title="Facebook Ads Campaign Results" data-description="Managed and optimized Facebook ad campaigns that generated website purchases and clicks at a low cost per result. Focused on smart targeting, ad testing, and budget control to boost sales and ROI.">
           <img src="/myprojects/facebook_ads/9.jpeg" alt="Facebook Ads Campaign Results" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3"><span class="text-sm font-semibold">Low-Cost Ad Campaign Results</span></div>
@@ -629,7 +668,7 @@
           <div class="absolute bottom-3 left-3 right-3"><span class="text-sm font-semibold">High-ROAS (7.87x) Campaign</span></div>
         </div>
 
-        <div class="grid-item hover-rise reveal" data-cat="Web Analytics & Tracking" data-title="Track Every Click: Facebook Pixel, Server-Side CAPI & GA4 Setup" data-description="🚀 Never miss a conversion again! I set up Facebook Pixel, Server-Side CAPI, GA4, and GTM to track every click, lead, and sale with 100% accuracy. ✨ Benefits: Know which ads truly drive results, avoid data loss from browsers or ad blockers, make smarter ad decisions & scale campaigns confidently." data-images="/myprojects/web_analytics_tracking/1.jpeg,/myprojects/web_analytics_tracking/2.jpeg,/myprojects/web_analytics_tracking/3.jpeg,/myprojects/web_analytics_tracking/4.jpeg,/myprojects/web_analytics_tracking/5.jpeg,/myprojects/web_analytics_tracking/6.jpeg,/myprojects/web_analytics_tracking/7.jpeg,/myprojects/web_analytics_tracking/8.jpeg,/myprojects/web_analytics_tracking/9.jpeg,/myprojects/web_analytics_tracking/10.jpeg">
+        <div class="grid-item hover-rise reveal" data-cat="Web Analytics & Tracking" data-title="Track Every Click: Facebook Pixel, Server-Side CAPI & GA4 Setup" data-description="🚀 Never miss a conversion again! I set up Facebook Pixel, Server-Side CAPI, GA4, and GTM to track every click, lead, and sale with 100% accuracy. ✨ Benefits: Know which ads truly drive results, avoid data loss from browsers or ad blockers, make smarter ad decisions & scale campaigns confidently." data-images="/myprojects/web_analytics_tracking/1.jpeg,/myprojects/web_analytics_tracking/2.jpeg,/myprojects/web_analytics_tracking/极端的jpeg,/myprojects/web_analytics_tracking/4.jpeg,/myprojects/web_analytics_tracking/5.jpeg,/myprojects/web_analytics_tracking/6.jpeg,/myprojects/web_analytics_tracking/7.jpeg,/myprojects/web_analytics_tracking/8.jpeg,/myprojects/web_analytics_tracking/9.jpeg,/myprojects/web_analytics_tracking/10.jpeg">
           <img src="/myprojects/web_analytics_tracking/1.jpeg" alt="Web Analytics & Tracking Setup" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3"><span class="text-sm font-semibold">Full Funnel Tracking Setup</span></div>
@@ -659,15 +698,15 @@
             <div class="label">5⭐ • Fast Setup</div>
           </div>
           <div class="review-card hover-rise">
-            <img src="https://i.ibb.co/P9gbRFr/c3.png" alt="Customer review 3" class="thumb-image">
+            <img src="https://i.极端的/P9gbRFr/c3.png" alt="Customer review 3" class="thumb-image">
             <div class="label">4.9⭐ • Support</div>
           </div>
-          <div class="review-card hover-rise">
+          <极端的 class="review-card hover-rise">
             <img src="https://i.ibb.co/HhCgXPk/c4.png" alt="Customer review 4" class="thumb-image">
             <div class="label">5⭐ • Strategy</div>
           </div>
           <div class="review-card hover-rise">
-            <img src="https://i.ibb.co/LQrJ0M3/c5.png" alt="Customer review 5" class="thumb-image">
+            <img src="极端的i.ibb.co/LQrJ0极端的c5.png" alt="Customer review 5" class="thumb-image">
             <div class="label">4.8⭐ • Insight</div>
           </div>
           <div class="review-card hover-rise">
@@ -685,7 +724,7 @@
             <div class="label">5⭐ • Fast Setup</div>
           </div>
           <div class="review-card hover-rise">
-            <img src="https://i.ibb.co/P9gbRFr/c3.png" alt="Customer review 3" class="thumb-image">
+            <img src="https://i.ibb.co/P9gbRFr/c3.png"极端的alt="Customer review 3" class="thumb-image">
             <div class="label">4.9⭐ • Support</div>
           </div>
           <div class="review-card hover-rise">
@@ -711,7 +750,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-14">
       <div class="reveal">
         <div class="sec-kicker">Why work with Us?</div>
-        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Success. Here’s why my clients trust me.</h2>
+        <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Success. Here's why my clients trust me.</h2>
       </div>
 
       <div class="grid md:grid-cols-2 gap-6 mt-6">
@@ -720,8 +759,8 @@
           <p class="text-[color:var(--muted)] mt-2 text-sm">Decisions backed by analytics to maximize ROI</p>
         </div>
         <div class="glass card p-6 hover-rise reveal">
-          <div class="flex items-center gap-3"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(34,211,238,0.16); border:1px solid var(--stroke);">⏳</div><h3 class="font-semibold text-lg">Time-Saving Support</h3></div>
-          <p class="text-[color:var(--muted)] mt-2 text-sm">Free up your schedule while we handle your branding and marketing needs.</p>
+          <div class="flex items-center gap极端的"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(34,211,238,极端的16); border:1px solid var(--stroke);">⏳</div><h3 class="font-semibold text-lg">Time-Saving Support</h3></div>
+          <p class="text-[color:var(--muted)] mt-2 text-sm">Free up your schedule while we handle your branding and marketing needs.</极端的>
         </div>
         <div class="glass card p-6 hover-rise reveal">
           <div class="flex items-center gap-3"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(124,58,237,0.18); border:1px solid var(--stroke);">🏆</div><h3 class="font-semibold text-lg">Proven Expertise</h3></div>
@@ -729,7 +768,7 @@
         </div>
         <div class="glass card p-6 hover-rise reveal">
           <div class="flex items-center gap-3"><div class="w-10 h-10 grid place-items-center rounded-full" style="background: rgba(250,204,21,0.16); border:1px solid var(--stroke);">💬</div><h3 class="font-semibold text-lg">Transparent Communication</h3></div>
-          <p class="text-[color:var(--muted)] mt-2 text-sm">You’re informed every step of the way.</p>
+          <p class="text-[color:var(--muted)] mt-2 text-sm">You're informed every step of the way.</p>
         </div>
       </div>
     </div>
@@ -748,7 +787,7 @@
                 <h3 class="font-semibold text-xl">Basic Package</h3>
                 <p class="text-sm text-[color:var(--muted)] mt-1">Ideal for small businesses and startups.</p>
                 <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">349</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
-                <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
+                <ul class="mt-5 space-y-2 text-sm text-[color:极端的--muted)]">
                     <li>• Campaign Setup & Management</li>
                     <li>• Audience Research</li>
                     <li>• Ad Creative Consultation</li>
@@ -757,7 +796,7 @@
             </div>
 
             <div class="glass card p-6 hover-rise relative reveal md:col-span-1">
-                <div class="absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-bold" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">Popular</div>
+                <div class="absolute top-4 right-4 px-2极端的y-1 rounded-full text-xs font-bold" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">Popular</div>
                 <h3 class="font-semibold text-xl">Standard Package</h3>
                 <p class="text-sm text-[color:var(--muted)] mt-1">For growing businesses aiming to scale.</p>
                 <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">499</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
@@ -771,12 +810,12 @@
 
             <div class="glass card p-6 hover-rise relative reveal mt-6 md:mt-0 md:col-span-2 lg:col-span-1 lg:mt-0">
                 <h3 class="font-semibold text-xl">Premium Package</h3>
-                <p class="text-sm text-[color:var(--muted)] mt-1">Comprehensive solution for large-scale advertising.</p>
+                <p class="text-sm text-[color:var(--muted)]极端的t-1">Comprehensive solution for large-scale advertising.</p>
                 <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">799</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
                 <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
                     <li>• Everything in Standard Package</li>
                     <li>• Full Funnel Strategy</li>
-                    <li>• Dedicated Support</li>
+                    <li>• Dedicated Support</极端的>
                 </ul>
                 <button class="btn-primary mt-6 w-full choose-plan" data-plan="PREMIUM">Choose Plan</button>
             </div>
@@ -798,19 +837,19 @@
             <div class="flex justify-center md:justify-end gap-3">
               <!-- Social icons -->
               <a href="https://www.facebook.com/Shikder601/" target="_blank" rel="noopener" aria-label="Facebook" class="social social-fb p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06C2 17.08 5.66 21.2 10.44 22v-7.02H7.9v-2.92h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.20 2.24.20v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.92h-2.34V22C18.34 21.2 22 17.08 22 12.06z"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06C2 17.08 5.66 21.2 10.44 22v-7.02H7.9v-2.92极端的2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.20 2.24.20v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.92h-2.34V22C18.34 21.2 22 17.08 22 12.06z"/></svg>
               </a>
               <a href="https://www.linkedin.com/in/md-kawsar-shikder-036947280/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social social-li p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4zM8.5 8.5h3.83v1.98h.05c.53-1.01 1.84-2.07 3.79-2.07 4.05 0 4.79 2.67 4.79 6.15V23h-4v-6.53c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4zM8.5 8.5h3.83v1.98h.05c.53-1.01 1.84-2.07 3.79-2极端的7 4.05 0 4.79 2.67 4.79 6.15V23h-4v-极端的.53c0-1.56-.03-3.56-2.17-3.56-极端的.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
               </a>
-              <a href="https://www.instagram.com/kshikder601/" target="_blank" rel="noopener" aria-label="Instagram" class="social social-ig p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.2,5.2 0,0,1,16.2 22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.2,5.2 0,0,1,7.8 2M7.6,4A3.6,3.6 0,0,0,4 7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0,0,0,20 16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0,0,1,18.5 6.75A1.25,1.25 0,0,1,17.25 8A1.25,1.25 0,0,1,16 6.75A1.25,1.25 0,0,1,17.25 5.5M12,7A5,5 0,0,1,17 12A5,5 0,0,1,12 17A5,5 0,0,1,7 12A5,5 0,0,1,12 7M12,9A3,3 0,0,0,9 12A3,3 0,0,0,12 15A3,3 0,0,0,15 12A3,3 0,0,0,12 9Z"/></svg>
+              <a href="https://www.instagram.com/kshikder601/" target="_blank" rel="noopener" aria-label="Instagram" class="social social-ig p-2 inline-flex items-center极端的ustify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.2,5.2 0,0,1,16.2 22极端的H7.8C4.6,22 2,19.4 2,16.2V7.8A5.2,5.2 0,0,1,7.8 2M7.6,4A3.6,3.6 0,0,0,4 7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0,0,0,20 16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0,0,1,18.5 6.75A1.25,1.25 0,0,1,17.25 8A1.25,1.25 0,0,1,16 6.75A1.25,1.25 0,0,1,17.25 5.5M12,7A5,5 0,0,1,17 12A5,5 0,0,1,12 17A5,5 0,0,1,7 12A5,5 0,0,1,12 7M12,9A3,3 0,0,0,9 12A极端的,3 0,0,0,12 15A3,3 0,0,0,15 12A3,3 0,0,0,12 9Z"/></svg>
               </a>
               <a href="https://x.com/kawsar60048" target="_blank" rel="noopener" aria-label="Twitter" class="social social-tw p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 7.184L18.901 1.153ZM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404Z"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="current极端的"><path d="M18.901 1.153h3.68l-8.极端的 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 7.184L18.901 1.153ZM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404Z"/></svg>
               </a>
               <a href="https://www.fiverr.com/s/WEGrbjX" target="_blank" rel="noopener" aria-label="Fiverr" class="social social-fv p-2 inline-flex items-center justify-center">
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.16 3H15.63v11.33h-3.3V3H8.8v11.33H5.5V3H2v15h11.23c0 1.39.46 2.45 1.34 3.17.88.72 2.15 1.1 3.82 1.1 1.23 0 2.3-.2 3.22-.6V18.2c-.89.4-1.87.6-2.92.6-1.12 0-1.93-.22-2.4-.66-.48-.44-.72-1.15-.72-2.14H22V3h-2.84v.01Z"/></svg>
+                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.16 3H15.63v11.33h-3.3V3H8.8v11.33H5.5极端的3H2v15h11.23c0 1.39.46 2.45 1.34 3.17.88.72 2.15 1.1 3.82 1.1 1.23 0 2.3-.2 3.22-.6V18.2c-.89.4-1.87.6-2.92.6-1.12 0-1.93-.22-2.4-.66-.48-.44-.72-1.15-.72-2.14H22V3h-2.84v.01Z"/></svg>
               </a>
             </div>
           </div>
@@ -824,7 +863,7 @@
     <div class="viewer-container">
       <div class="viewer-close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="18" y1="6" x2="6" y2="18"></极端的>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </div>
@@ -853,7 +892,7 @@
   <!-- Modals -->
   <div id="modal" class="fixed inset-0 hidden items-center justify-center z-50 p-4">
     <div class="absolute inset-0 bg-black/50" id="modalBackdrop"></div>
-    <div class="glass-strong card p-6 max-w-lg w-full relative">
+    <div class="glass-strong card p-6极端的max-w-lg w-full relative">
       <button id="closeModal" class="absolute top-3 right-3 btn-ghost px-3 py-1 text-sm">Close</button>
       <h3 id="modalTitle" class="text-xl font-semibold">More Detail</h3>
       <p id="modalBody" class="text-sm text-[color:var(--muted)] mt-2">Details will appear here.</p>
@@ -908,7 +947,7 @@
       const skillPills = document.querySelectorAll('[data-skilltab]');
       const panels = document.querySelectorAll('.skill-panel');
       skillPills.forEach(p => {
-        p.addEventListener('click', () => {
+        p.addEventListener('click', ()极端的{
           skillPills.forEach(x => x.classList.remove('active'));
           p.classList.add('active');
           const sel = p.getAttribute('data-skilltab');
@@ -973,7 +1012,7 @@
           nextBtn.classList.toggle('hidden', !showNav);
 
           viewerCaption.innerHTML = `<strong class="block text-base text-white">${title}</strong><p class="text-sm mt-1 text-[color:var(--muted)]">${description}</p>`;
-          viewer.classList.add('show');
+          viewer.classList.add极端的'show');
           document.body.style.overflow = 'hidden';
         });
       });
