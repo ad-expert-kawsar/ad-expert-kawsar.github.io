@@ -140,8 +140,9 @@
     .thumb-image { width: 100%; height: 100%; object-fit: cover; }
     @keyframes shimmer{ 0%{ background-position: 0% 50%;} 50%{ background-position: 100% 50%;} 100%{ background-position: 0% 50%;} }
 
-    /* Lightbox viewer -- UPDATED & FIXED */
+    /* Lightbox viewer -- NEW NAVIGATION SYSTEM */
     #viewer .stage {
+      position: relative; /* Needed for nav buttons */
       width: auto;
       height: auto;
       max-width: 90vw;
@@ -171,6 +172,25 @@
       max-width: min(80%, 800px);
       text-align: center; /* Ensures text is centered */
     }
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      background: var(--glass);
+      border: 1px solid var(--stroke);
+      width: 44px;
+      height: 44px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+    .nav-arrow:hover { background: var(--glass-strong); }
+    .nav-arrow.prev { left: 16px; }
+    .nav-arrow.next { right: 16px; }
 
 
     /* Reviews marquee */
@@ -470,7 +490,7 @@
         <div class="grid-item hover-rise reveal" data-cat="Meta Ads" 
              data-title="Baby Product Sales Campaign (A/B Test & Results)" 
              data-description="This project was entirely focused on baby products. The client lacked a strong online presence and was facing issues with low sales and poor website traffic. After seeing my gig, they hired me to manage their project. I first analyzed their products, conducted research, and identified the potential target audience. Initially, I ran a campaign, but the results were not satisfactory. To improve performance, I launched an A/B test campaign named “4-Bicc-AB-Kids Toy Product Sales DT”. Through this A/B test, I successfully drove significant traffic, resulting in improved engagement and increased sales on the client’s website."
-             data-second-img="/myprojects/facebook_ads/6.2.jpeg">
+             data-images="/myprojects/facebook_ads/6.1.jpeg,/myprojects/facebook_ads/6.2.jpeg">
           <img src="/myprojects/facebook_ads/6.1.jpeg" alt="Baby Product Sales Campaign" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
@@ -519,6 +539,18 @@
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3">
             <span class="text-sm font-semibold">High-ROAS (7.87x) Campaign</span>
+          </div>
+        </div>
+
+        <!-- NEW Web Analytics Gallery -->
+        <div class="grid-item hover-rise reveal" data-cat="Web Analytics & Tracking" 
+             data-title="Track Every Click: Facebook Pixel, Server-Side CAPI & GA4 Setup" 
+             data-description="🚀 Never miss a conversion again! I set up Facebook Pixel, Server-Side CAPI, GA4, and GTM to track every click, lead, and sale with 100% accuracy. ✨ Benefits: Know which ads truly drive results, avoid data loss from browsers or ad blockers, make smarter ad decisions & scale campaigns confidently."
+             data-images="/myprojects/web_analytics_tracking/1.jpeg,/myprojects/web_analytics_tracking/2.jpeg,/myprojects/web_analytics_tracking/3.jpeg,/myprojects/web_analytics_tracking/4.jpeg,/myprojects/web_analytics_tracking/5.jpeg,/myprojects/web_analytics_tracking/6.jpeg,/myprojects/web_analytics_tracking/7.jpeg,/myprojects/web_analytics_tracking/8.jpeg,/myprojects/web_analytics_tracking/9.jpeg,/myprojects/web_analytics_tracking/10.jpeg">
+          <img src="/myprojects/web_analytics_tracking/1.jpeg" alt="Web Analytics & Tracking Setup" class="thumb-image">
+          <div class="mask"></div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <span class="text-sm font-semibold">Full Funnel Tracking Setup</span>
           </div>
         </div>
         
@@ -727,6 +759,13 @@
       <button class="btn-ghost close-x">Close</button>
       <div class="stage">
         <div id="viewerContent" class="w-full h-full"></div>
+        <!-- Navigation Arrows -->
+        <button id="prevBtn" class="nav-arrow prev hidden">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button id="nextBtn" class="nav-arrow next hidden">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
       </div>
       <div id="viewerCaption" class="text-sm px-2"></div>
     </div>
@@ -789,57 +828,98 @@
       });
     });
 
-    // Portfolio lightbox viewer -- UPDATED & FIXED
+    // --- PORTFOLIO LIGHTBOX SCRIPT --- (FULLY REVISED FOR NAVIGATION)
+
     const viewer = document.getElementById('viewer');
     const viewerContent = document.getElementById('viewerContent');
     const viewerCaption = document.getElementById('viewerCaption');
-    document.querySelector('#viewer .close-x').addEventListener('click', ()=> {
-      viewer.classList.add('hidden'); viewer.classList.remove('flex');
-      viewerContent.innerHTML = '';
-    });
-    viewer.addEventListener('click', (e)=> { if(e.target === viewer){ document.querySelector('#viewer .close-x').click(); } });
-    window.addEventListener('keydown', (e)=> { if(e.key === 'Escape' && !viewer.classList.contains('hidden')) document.querySelector('#viewer .close-x').click(); });
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    let currentImages = [];
+    let currentIndex = 0;
 
-    // Make each portfolio card open the viewer -- FULLY REVISED
-    document.querySelectorAll('#portfolioGrid .grid-item').forEach(card=>{
-      card.addEventListener('click', ()=>{
-        const imgSrc = card.querySelector('.thumb-image').src;
-        const secondImgSrc = card.getAttribute('data-second-img');
-        const title = card.getAttribute('data-title') || 'Preview';
-        const description = card.getAttribute('data-description') || '';
-
-        viewerContent.innerHTML = ''; // Clear previous content
-
-        if (secondImgSrc) {
-            // Handle dual-image view
-            const container = document.createElement('div');
-            container.className = 'flex items-center justify-center gap-4 w-full h-full';
-
-            const img1 = document.createElement('img');
-            img1.src = imgSrc;
-            img1.className = 'block max-w-[50%] max-h-full object-contain rounded-lg';
-
-            const img2 = document.createElement('img');
-            img2.src = secondImgSrc;
-            img2.className = 'block max-w-[50%] max-h-full object-contain rounded-lg';
-            
-            container.appendChild(img1);
-            container.appendChild(img2);
-            viewerContent.appendChild(container);
-        } else {
-            // Handle single-image view
-            const img = document.createElement('img');
-            img.src = imgSrc;
-            viewerContent.appendChild(img); // CSS already handles this
-        }
+    function showImage(index) {
+        if (!currentImages || currentImages.length === 0) return;
         
-        viewerCaption.innerHTML = `<strong class="block text-base text-white">${title}</strong><p class="text-xs mt-1 text-[color:var(--muted)]">${description}</p>`;
-        viewer.classList.remove('hidden'); 
-        viewer.classList.add('flex');
-      });
+        // Update the main image
+        viewerContent.innerHTML = `<img src="${currentImages[index]}" alt="Portfolio image ${index + 1}">`;
+        currentIndex = index;
+
+        // Update button visibility
+        prevBtn.classList.toggle('hidden', index === 0);
+        nextBtn.classList.toggle('hidden', index === currentImages.length - 1);
+      
+        // Preload next and previous images for smoother experience
+        if(index > 0) new Image().src = currentImages[index - 1];
+        if(index < currentImages.length - 1) new Image().src = currentImages[index + 1];
+    }
+    
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            showImage(currentIndex - 1);
+        }
     });
 
-    // Modal for service details and plan selection
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < currentImages.length - 1) {
+            showImage(currentIndex + 1);
+        }
+    });
+
+    document.querySelectorAll('#portfolioGrid .grid-item').forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.getAttribute('data-title') || 'Preview';
+            const description = card.getAttribute('data-description') || '';
+            const imagesAttr = card.getAttribute('data-images');
+
+            // Reset and populate image array
+            currentImages = [];
+            if (imagesAttr) {
+                currentImages = imagesAttr.split(',');
+            } else {
+                // Fallback for single-image items
+                const singleImg = card.querySelector('.thumb-image');
+                if (singleImg) currentImages.push(singleImg.src);
+            }
+            
+            // Show the first image and caption
+            if(currentImages.length > 0) {
+              showImage(0);
+            }
+            
+            // Show navigation buttons only if there is more than one image
+            if (currentImages.length <= 1) {
+              prevBtn.classList.add('hidden');
+              nextBtn.classList.add('hidden');
+            }
+
+            viewerCaption.innerHTML = `<strong class="block text-base text-white">${title}</strong><p class="text-xs mt-1 text-[color:var(--muted)]">${description}</p>`;
+            viewer.classList.remove('hidden');
+            viewer.classList.add('flex');
+        });
+    });
+
+    // Close viewer logic
+    const closeViewer = () => {
+        viewer.classList.add('hidden');
+        viewer.classList.remove('flex');
+        viewerContent.innerHTML = '';
+        currentImages = []; // Clear the array
+    };
+
+    document.querySelector('#viewer .close-x').addEventListener('click', closeViewer);
+    viewer.addEventListener('click', (e) => { if (e.target === viewer) closeViewer(); });
+    window.addEventListener('keydown', (e) => {
+        if (!viewer.classList.contains('hidden')) {
+            if (e.key === 'Escape') closeViewer();
+            if (e.key === 'ArrowLeft') prevBtn.click();
+            if (e.key === 'ArrowRight') nextBtn.click();
+        }
+    });
+
+
+    // --- MODAL SCRIPT (NO CHANGES) ---
     const modal = document.getElementById('modal');
     const closeModal = document.getElementById('closeModal');
     const modalTitle = document.getElementById('modalTitle');
