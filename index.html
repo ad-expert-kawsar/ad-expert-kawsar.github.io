@@ -319,7 +319,7 @@
         </div>
         <div class="glass card p-6 hover-rise reveal">
           <div class="flex items-center justify-between">
-            <h3 class="font-semibold text-xl">Web Analytics</h3>
+            <h3 class="font-semibold text-xl">Web Analytics & Tracking</h3>
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full" style="background: rgba(110,231,183,0.16); border:1px solid var(--stroke);">📊</span>
           </div>
           <p class="text-[color:var(--muted)] mt-3 text-sm">Facebook Pixel, Conversion API, Server-Side Tracking, GA4, Google Tag Manager, dashboards that tell the truth.</p>
@@ -339,7 +339,7 @@
 
       <div class="flex flex-wrap gap-3 mt-6">
         <button class="pill active" data-skilltab="meta">Meta Ads</button>
-        <button class="pill" data-skilltab="analytics">Web Analytics</button>
+        <button class="pill" data-skilltab="analytics">Web Analytics & Tracking</button>
       </div>
 
       <div class="mt-6 grid md:grid-cols-2 gap-6">
@@ -376,7 +376,7 @@
       <div class="flex flex-wrap gap-3 mt-6">
         <button class="pill active" data-filter="all">All</button>
         <button class="pill" data-filter="Meta Ads">Meta Ads</button>
-        <button class="pill" data-filter="Web Analytics">Web Analytics</button>
+        <button class="pill" data-filter="Web Analytics & Tracking">Web Analytics & Tracking</button>
       </div>
 
       <!-- Grid (permanent items; click to open viewer) -->
@@ -389,12 +389,12 @@
             <span class="pill py-1 px-2 text-xs pointer-events-none">Meta Ads</span>
           </div>
         </div>
-        <div class="grid-item hover-rise reveal" data-cat="Web Analytics" data-title="Analytics • GA4 Setup">
+        <div class="grid-item hover-rise reveal" data-cat="Web Analytics & Tracking" data-title="Analytics • GA4 Setup">
           <img src="https://i.ibb.co/7jZt1pP/p4.png" alt="Analytics GA4 Setup Project" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
             <span class="text-sm">Analytics • GA4 Setup</span>
-            <span class="pill py-1 px-2 text-xs pointer-events-none">Web Analytics</span>
+            <span class="pill py-1 px-2 text-xs pointer-events-none">Web Analytics & Tracking</span>
           </div>
         </div>
         <div class="grid-item hover-rise reveal" data-cat="Meta Ads" data-title="Meta • Lead Gen">
@@ -405,12 +405,12 @@
             <span class="pill py-1 px-2 text-xs pointer-events-none">Meta Ads</span>
           </div>
         </div>
-        <div class="grid-item hover-rise reveal" data-cat="Web Analytics" data-title="Analytics • Dashboard">
+        <div class="grid-item hover-rise reveal" data-cat="Web Analytics & Tracking" data-title="Analytics • Dashboard">
           <img src="https://i.ibb.co/KzWdF80/p6.png" alt="Analytics Dashboard Project" class="thumb-image">
           <div class="mask"></div>
           <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
             <span class="text-sm">Analytics • Dashboard</span>
-            <span class="pill py-1 px-2 text-xs pointer-events-none">Web Analytics</span>
+            <span class="pill py-1 px-2 text-xs pointer-events-none">Web Analytics & Tracking</span>
           </div>
         </div>
       </div>
@@ -715,7 +715,7 @@
         const type = btn.getAttribute('data-service');
         const map = {
           meta: { title: 'Meta Ads Campaign', body: 'Audience research, creative testing, pixel setup, and funnel-based retargeting to grow ROAS.' },
-          analytics: { title: 'Web Analytics', body: 'GA4 + GTM implementation, events, enhanced conversions, and dashboarding for clear insights.' }
+          analytics: { title: 'Web Analytics & Tracking', body: 'GA4 + GTM implementation, events, enhanced conversions, and dashboarding for clear insights.' }
         };
         modalTitle.textContent = map[type].title;
         modalBody.textContent = map[type].body;
