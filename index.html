@@ -21,7 +21,10 @@
       --accent:#7c3aed;
       --accent2:#22d3ee;
     }
-    html,body{height:100%;}
+    /* Removed height:100% to fix double scrollbar issue */
+    html {
+      scroll-behavior: smooth;
+    }
     body{
       font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
       color: var(--text);
@@ -346,8 +349,10 @@
     .social:hover{ transform: scale(1.07); box-shadow: 0 10px 24px rgba(0,0,0,0.25); filter: brightness(1.05); }
     .social-fb svg { color: #1877F2; }
     .social-li svg { color: #0A66C2; }
-    .social-yt svg { color: #FF0000; }
+    .social-tw svg { color: #ffffff; } /* Twitter (X) color */
     .social-ig svg { color: #E4405F; }
+    .social-fv svg { color: #1dbf73; } /* Fiverr color */
+
 
     /* Smooth entrance */
     .reveal { opacity: 0; transform: translateY(16px); transition: all .6s ease; }
@@ -809,11 +814,14 @@
               <a href="https://www.linkedin.com/in/md-kawsar-shikder-036947280/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social social-li p-2 inline-flex items-center justify-center">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4zM8.5 8.5h3.83v1.98h.05c.53-1.01 1.84-2.07 3.79-2.07 4.05 0 4.79 2.67 4.79 6.15V23h-4v-6.53c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
               </a>
-              <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" class="social social-yt p-2 inline-flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.23-1.64-.95-2.36c-.9-.95-1.9-.96-2.36-1.02C17.64 2.5 12 2.5 12 2.5h0s-5.64 0-8.19.32c-.46.06-1.46.07-2.36 1.02C.73 4.56.5 6.2.5 6.2S.18 8.2.18 10.2v1.6c0 2 .32 4 .32 4s.23 1.64.95 2.36c.9.95 2.08.92 2.61 1.02 1.9.18 8 .32 8 .32s5.64 0 8.19-.32c.46-.06 1.46-.07 2.36-1.02.72-.72.95-2.36.95-2.36s.32-2 .32-4v-1.6c0-2-.32-4-.32-4zM9.75 13.88V8.92l5.2 2.48-5.2 2.48z"/></svg>
-              </a>
-              <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social social-ig p-2 inline-flex items-center justify-center">
+              <a href="https://www.instagram.com/kshikder601/" target="_blank" rel="noopener" aria-label="Instagram" class="social social-ig p-2 inline-flex items-center justify-center">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .26 2.5.43.6.23 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.4 1.3.5 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.5-.2.6-.5 1-.9 1.5-.5.5-1 .8-1.6 1-.5.2-1.3.4-2.5.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.5-.6-.2-1.1-.5-1.6-1-.4-.5-.7-.9-.9-1.5-.3-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .5-2.5.2-.6.5-1.1 1-1.6.5-.5.9-.7 1.5-1 .5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2m0 2.2c-3.1 0-3.5 0-4.7.1-1 .05-1.6.23-2 .38-.5.2-.8.4-1.1.7-.3.3-.6.6-.8 1.1-.2.4-.3 1-.4 2-.1 1.3-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.4 2 .2.5.5.8.8 1.1.3.3.7.6 1.1.8.4.2 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 2-.4.5-.2.8-.5 1.1-.8.3-.3.6-.6.8-1.1.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.4-2-.2-.5-.5-.8-.8-1.1-.3-.3-.6-.6-1.1-.8-.4-.2-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1z"/></svg>
+              </a>
+              <a href="https://x.com/kawsar60048" target="_blank" rel="noopener" aria-label="Twitter" class="social social-tw p-2 inline-flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 7.184L18.901 1.153ZM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404Z"/></svg>
+              </a>
+              <a href="https://www.fiverr.com/s/WEGrbjX" target="_blank" rel="noopener" aria-label="Fiverr" class="social social-fv p-2 inline-flex items-center justify-center">
+                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.16 3H15.63v11.33h-3.3V3H8.8v11.33H5.5V3H2v15h11.23c0 1.39.46 2.45 1.34 3.17.88.72 2.15 1.1 3.82 1.1 1.23 0 2.3-.2 3.22-.6V18.2c-.89.4-1.87.6-2.92.6-1.12 0-1.93-.22-2.4-.66-.48-.44-.72-1.15-.72-2.14H22V3h-2.84v.01Z"/></svg>
               </a>
             </div>
           </div>
