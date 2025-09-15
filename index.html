@@ -29,11 +29,10 @@
                   linear-gradient(180deg, var(--bg1), var(--bg2));
       overflow-x: hidden;
     }
-    /* Main wrapper to prevent horizontal scroll */
+    /* Main wrapper to contain content */
     .main-wrapper {
       position: relative;
       width: 100%;
-      /* <-- সমস্যাযুক্ত লাইনটি এখান থেকে সরিয়ে দেওয়া হয়েছে */
     }
     /* Glassmorphism */
     .glass {
@@ -66,8 +65,10 @@
     /* Ring portrait -- RESPONSIVE UPDATE */
     .ring-wrap {
       position: relative;
-      width: 300px; /* Mobile size */
+      width: 300px; /* Base size for mobile */
       height: 300px;
+      max-width: 85vw; /* Ensures it shrinks on narrow screens */
+      max-height: 85vw; /* Keeps the aspect ratio */
     }
     .ring {
       position: absolute;
@@ -101,6 +102,8 @@
       .ring-wrap {
         width: 400px;
         height: 400px;
+        max-width: 400px; /* Override vw unit */
+        max-height: 400px;
       }
       .ring {
         padding: 10px;
@@ -112,6 +115,8 @@
       .ring-wrap {
         width: 500px;
         height: 500px;
+        max-width: 500px; /* Override vw unit */
+        max-height: 500px;
       }
       .ring {
         padding: 12px;
@@ -357,10 +362,12 @@
 </head>
 <body>
 <div class="main-wrapper">
-  <!-- Blobs -->
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
+  <!-- Blob Container to prevent overflow issues -->
+  <div style="position: absolute; inset: 0; overflow: hidden; z-index: -1; pointer-events: none;">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
   <!-- Header / Hero -->
   <header class="relative">
@@ -796,7 +803,7 @@
             <p class="text-sm text-[color:var(--muted)]">Scale Your Business With AI Driven Meta Ad Strategies</p>
           </div>
           <div class="md:text-right">
-            <div class="flex justify-center md:justify-end gap-3">
+            <div class="flex flex-wrap justify-center md:justify-end gap-3">
               <!-- Social icons -->
               <a href="https://www.facebook.com/Shikder601/" target="_blank" rel="noopener" aria-label="Facebook" class="social social-fb p-2 inline-flex items-center justify-center">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06C2 17.08 5.66 21.2 10.44 22v-7.02H7.9v-2.92h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.20 2.24.20v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.92h-2.34V22C18.34 21.2 22 17.08 22 12.06z"/></svg>
