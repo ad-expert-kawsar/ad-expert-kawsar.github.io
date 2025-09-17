@@ -751,71 +751,62 @@
             <h2 class="sec-title text-2xl md:text-4xl font-bold mt-2">Flexible Plans</h2>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 justify-center">
-            <div class="glass card p-6 hover-rise relative reveal md:col-span-1">
-                <h3 class="font-semibold text-xl">Basic Package</h3>
-                <p class="text-sm text-[color:var(--muted)] mt-1">Ideal for small businesses and startups.</p>
-                <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">250</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
-                <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
-                    <li>• 1 Campaign Setup & Management (Traffic / Conversion / Sales Objective)</li>
-                    <br>
-                    <li>• Up to 3 Ad Copies & Basic Creatives (provided by client or designed simple)</li>
-                    <br>
-                    <li>• Audience Research & Targeting</li>
-                    <br>
-                    <li>• Meta Pixel Setup & Basic Tracking Check</li>
-                    <br>
-                    <li>• Weekly Optimization (budget, ads, and targeting adjustments)</li>
-                    <br>
-                    <li>• 1 Detailed Performance Report (Monthly Summary)</li>
-                </ul>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+            <!-- Basic Package -->
+            <div class="glass card p-6 hover-rise relative reveal flex flex-col">
+                <div class="flex-grow">
+                  <h3 class="font-semibold text-xl">Basic Package</h3>
+                  <p class="text-sm text-[color:var(--muted)] mt-1">Ideal for small businesses and startups.</p>
+                  <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">250</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
+                  <ul class="mt-5 space-y-3 text-sm text-[color:var(--muted)]">
+                      <li>• 1 Campaign Setup & Management (Traffic / Conversion / Sales Objective)</li>
+                      <li>• Up to 3 Ad Copies & Basic Creatives (provided by client or designed simple)</li>
+                      <li>• Audience Research & Targeting</li>
+                      <li>• Meta Pixel Setup & Basic Tracking Check</li>
+                      <li>• Weekly Optimization (budget, ads, and targeting adjustments)</li>
+                      <li>• 1 Detailed Performance Report (Monthly Summary)</li>
+                  </ul>
+                </div>
                 <button class="btn-primary mt-6 w-full choose-plan" data-plan="BASIC">Choose Plan</button>
             </div>
 
-            <div class="glass card p-6 hover-rise relative reveal md:col-span-1">
+            <!-- Standard Package -->
+            <div class="glass card p-6 hover-rise relative reveal flex flex-col">
                 <div class="absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-bold" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">Popular</div>
-                <h3 class="font-semibold text-xl">Standard Package</h3>
-                <p class="text-sm text-[color:var(--muted)] mt-1">For growing businesses aiming to scale.</p>
-                <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">400</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
-                <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
-                    <li>• Up to 2 Campaigns Setup & Management (Traffic / Conversion / Sales / Retargeting)</li>
-                    <br>
-                    <li>• Up to 5 Ad Copies & Creatives (client-provided or designed simple)</li>
-                    <br>
-                    <li>• Meta Pixel + Event Setup & Tracking Verification</li>
-                    <br>
-                    <li>• Twice-Weekly Optimization (budget scaling, split-testing, targeting refinement)</li>
-                    <br>
-                    <li>• A/B Testing (ad copies, audiences, or creatives)</li>
-                    <br>
-                    <li>• 2 Detailed Performance Reports (Bi-Weekly + Monthly Summary)</li>
-                    <br>
-                    <li>• Advanced Audience Research & Segmentation</li>
-                </ul>
+                <div class="flex-grow">
+                  <h3 class="font-semibold text-xl">Standard Package</h3>
+                  <p class="text-sm text-[color:var(--muted)] mt-1">For growing businesses aiming to scale.</p>
+                  <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">400</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
+                  <ul class="mt-5 space-y-3 text-sm text-[color:var(--muted)]">
+                      <li>• Up to 2 Campaigns Setup & Management (Traffic / Conversion / Sales / Retargeting)</li>
+                      <li>• Up to 5 Ad Copies & Creatives (client-provided or designed simple)</li>
+                      <li>• Meta Pixel + Event Setup & Tracking Verification</li>
+                      <li>• Twice-Weekly Optimization (budget scaling, split-testing, targeting refinement)</li>
+                      <li>• A/B Testing (ad copies, audiences, or creatives)</li>
+                      <li>• 2 Detailed Performance Reports (Bi-Weekly + Monthly Summary)</li>
+                      <li>• Advanced Audience Research & Segmentation</li>
+                  </ul>
+                </div>
                 <button class="btn-primary mt-6 w-full choose-plan" data-plan="STANDARD">Choose Plan</button>
             </div>
 
-            <div class="glass card p-6 hover-rise relative reveal mt-6 md:mt-0 md:col-span-2 lg:col-span-1 lg:mt-0">
-                <h3 class="font-semibold text-xl">Premium Package</h3>
-                <p class="text-sm text-[color:var(--muted)] mt-1">Comprehensive solution for large-scale advertising.</p>
-                <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">500</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
-                <ul class="mt-5 space-y-2 text-sm text-[color:var(--muted)]">
-                    <li>• Up to 3 Campaigns Setup & Management with Full-Funnel Strategy</li>
-                    <br>
-                    <li>• Up to 7 Ad Copies & High-Quality Creatives (client-provided or professionally designed)</li>
-                    <br>
-                    <li>• In-Depth Audience Research & Advanced Segmentation</li>
-                    <br>
-                    <li>• Full Meta Pixel + Server-Side Tracking + Event Setup + Conversion API (CAPI) & GA4 Verification</li>
-                    <br>
-                    <li>• Daily Optimization (budget scaling, split-testing, targeting refinement)</li>
-                    <br>
-                    <li>• A/B Testing (ad copies, audiences, creatives)</li>
-                    <br>
-                    <li>• 4 Detailed Performance Reports (Weekly + Monthly Summary</li>
-                    <br>
-                    <li>• Extra 15-Day Post-Delivery Management (monitoring & optimization after project completion)</li>
-                </ul>
+            <!-- Premium Package -->
+            <div class="glass card p-6 hover-rise relative reveal flex flex-col">
+                <div class="flex-grow">
+                  <h3 class="font-semibold text-xl">Premium Package</h3>
+                  <p class="text-sm text-[color:var(--muted)] mt-1">Comprehensive solution for large-scale advertising.</p>
+                  <div class="mt-5 flex items-end gap-2"><span class="text-3xl font-extrabold">$</span><span class="text-5xl font-extrabold">500</span><span class="text-sm text-[color:var(--muted)]">/mo</span></div>
+                  <ul class="mt-5 space-y-3 text-sm text-[color:var(--muted)]">
+                      <li>• Up to 3 Campaigns Setup & Management with Full-Funnel Strategy</li>
+                      <li>• Up to 7 Ad Copies & High-Quality Creatives (client-provided or professionally designed)</li>
+                      <li>• In-Depth Audience Research & Advanced Segmentation</li>
+                      <li>• Full Meta Pixel + Server-Side Tracking + Event Setup + Conversion API (CAPI) & GA4 Verification</li>
+                      <li>• Daily Optimization (budget scaling, split-testing, targeting refinement)</li>
+                      <li>• A/B Testing (ad copies, audiences, creatives)</li>
+                      <li>• 4 Detailed Performance Reports (Weekly + Monthly Summary)</li>
+                      <li>• Extra 15-Day Post-Delivery Management (monitoring & optimization after project completion)</li>
+                  </ul>
+                </div>
                 <button class="btn-primary mt-6 w-full choose-plan" data-plan="PREMIUM">Choose Plan</button>
             </div>
         </div>
