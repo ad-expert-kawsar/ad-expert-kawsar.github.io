@@ -334,12 +334,21 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Reviews marquee */
+    /* Reviews marquee -- IMPROVED */
     .reviews-marquee{ overflow:hidden; }
-    .reviews-track{ display:flex; gap:16px; width: max-content; animation: slideLeft 35s linear infinite; }
-    .review-card{ width: 300px; aspect-ratio: 4/3; border:1px solid var(--stroke); border-radius:16px; overflow:hidden; background: rgba(255,255,255,0.04); position:relative; }
+    .reviews-track{ display:flex; gap:24px; width: max-content; animation: slideLeft 60s linear infinite; }
+    .review-card{ 
+        width: 380px; 
+        aspect-ratio: 16/9; 
+        border:1px solid var(--stroke); 
+        border-radius:16px; 
+        overflow:hidden; 
+        background: rgba(255,255,255,0.04); 
+        position:relative; 
+        cursor: pointer;
+    }
     .review-card .thumb{ animation-duration: 4s; }
-    .review-card .label{ position:absolute; bottom:10px; left:12px; padding:.25rem .5rem; border-radius:9999px; background: rgba(0,0,0,0.35); font-size:.8rem; }
+    .review-card .label{ position:absolute; bottom:10px; left:12px; padding:.25rem .5rem; border-radius:9999px; background: rgba(0,0,0,0.35); font-size:.8rem; backdrop-filter: blur(4px); }
     @keyframes slideLeft{ 0%{ transform: translateX(0);} 100%{ transform: translateX(-50%);} }
 
     /* Footer links */
@@ -657,7 +666,7 @@
 
       <div class="reviews-marquee glass card p-4 mt-6">
         <div class="reviews-track">
-          <!-- Row 1 -->
+          <!-- Items will be duplicated by JS for infinite loop -->
           <div class="review-card hover-rise">
             <img src="/customer-review/1.jpeg" alt="Customer review 1" class="thumb-image">
             <div class="label">5⭐ • Great ROAS</div>
@@ -931,7 +940,17 @@
         });
       });
 
-      // --- PORTFOLIO LIGHTBOX SCRIPT ---
+      // --- NEW: Infinite Marquee for Reviews ---
+      const reviewsTrack = document.querySelector('.reviews-track');
+      if (reviewsTrack && reviewsTrack.children.length > 0) {
+        const reviewCards = Array.from(reviewsTrack.children);
+        reviewCards.forEach(card => {
+          const clone = card.cloneNode(true);
+          reviewsTrack.appendChild(clone);
+        });
+      }
+
+      // --- UPDATED: Combined Portfolio & Review Lightbox Script ---
       const viewer = document.getElementById('viewer');
       const viewerContent = document.getElementById('viewerContent');
       const viewerCaption = document.getElementById('viewerCaption');
@@ -946,30 +965,51 @@
 
       function showImage(index) {
         if (!currentImages || currentImages.length === 0) return;
-        viewerContent.innerHTML = `<img src="${currentImages[index]}" alt="Portfolio image ${index + 1}" class="animate-fade-in">`;
+        // Simple fade-in effect by replacing the element
+        viewerContent.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = currentImages[index];
+        img.alt = `Image ${index + 1}`;
+        img.style.opacity = 0;
+        img.style.transition = 'opacity 0.3s ease';
+        viewerContent.appendChild(img);
+        setTimeout(() => { img.style.opacity = 1; }, 50);
+
         currentIndex = index;
         currentIndexEl.textContent = index + 1;
-        prevBtn.classList.toggle('hidden', index === 0);
-        nextBtn.classList.toggle('hidden', index === currentImages.length - 1);
+
+        const showNav = currentImages.length > 1;
+        prevBtn.classList.toggle('hidden', !showNav || index === 0);
+        nextBtn.classList.toggle('hidden', !showNav || index === currentImages.length - 1);
+        document.querySelector('.viewer-counter').style.display = showNav ? 'block' : 'none';
       }
 
-      prevBtn.addEventListener('click', () => { if (currentIndex > 0) showImage(currentIndex - 1); });
-      nextBtn.addEventListener('click', () => { if (currentIndex < currentImages.length - 1) showImage(currentIndex + 1); });
+      prevBtn.addEventListener('click', (e) => { e.stopPropagation(); if (currentIndex > 0) showImage(currentIndex - 1); });
+      nextBtn.addEventListener('click', (e) => { e.stopPropagation(); if (currentIndex < currentImages.length - 1) showImage(currentIndex + 1); });
 
-      document.querySelectorAll('#portfolioGrid .grid-item').forEach(card => {
+      document.querySelectorAll('#portfolioGrid .grid-item, .reviews-track .review-card').forEach(card => {
         card.addEventListener('click', () => {
-          const title = card.getAttribute('data-title') || 'Preview';
-          const description = card.getAttribute('data-description') || '';
-          const imagesAttr = card.getAttribute('data-images');
+          let title = 'Image Preview';
+          let description = '';
+          let imagesAttr;
+          let isReview = card.classList.contains('review-card');
 
-          currentImages = imagesAttr ? imagesAttr.split(',') : [card.querySelector('.thumb-image').src];
+          if (isReview) {
+            title = card.querySelector('.label')?.textContent || 'Client Review';
+            description = 'A screenshot of a client review.';
+            currentImages = [card.querySelector('.thumb-image').src];
+          } else { // It's a portfolio item
+            title = card.getAttribute('data-title') || 'Project Preview';
+            description = card.getAttribute('data-description') || 'Detailed project view.';
+            imagesAttr = card.getAttribute('data-images');
+            currentImages = imagesAttr ? imagesAttr.split(',') : [card.querySelector('.thumb-image').src];
+          }
+
           totalImagesEl.textContent = currentImages.length;
           
-          if (currentImages.length > 0) showImage(0);
-
-          const showNav = currentImages.length > 1;
-          prevBtn.classList.toggle('hidden', !showNav);
-          nextBtn.classList.toggle('hidden', !showNav);
+          if (currentImages.length > 0) {
+            showImage(0);
+          }
 
           viewerCaption.innerHTML = `<strong class="block text-base text-white">${title}</strong><p class="text-sm mt-1 text-[color:var(--muted)]">${description}</p>`;
           viewer.classList.add('show');
@@ -984,11 +1024,12 @@
 
       viewerClose.addEventListener('click', closeViewer);
       viewer.addEventListener('click', (e) => { if (e.target === viewer) closeViewer(); });
+      
       window.addEventListener('keydown', (e) => {
         if (viewer.classList.contains('show')) {
           if (e.key === 'Escape') closeViewer();
-          if (e.key === 'ArrowLeft') prevBtn.click();
-          if (e.key === 'ArrowRight') nextBtn.click();
+          if (e.key === 'ArrowLeft' && !prevBtn.classList.contains('hidden')) prevBtn.click();
+          if (e.key === 'ArrowRight' && !nextBtn.classList.contains('hidden')) nextBtn.click();
         }
       });
 
